@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -17,5 +18,15 @@ use Illuminate\Support\Facades\Route;
 Route::redirect('/', 'login');
 
 Auth::routes();
+
+Route::get('/lang/{locale}', function (string $locale) {
+    if (!in_array($locale, ['en', 'nl'])) {
+        abort(400);
+    }
+
+    App::setLocale($locale);
+
+    return redirect()->back();
+});
 
 Route::get('/dashboard', [\App\Http\Controllers\HomeController::class, 'index'])->name('root');

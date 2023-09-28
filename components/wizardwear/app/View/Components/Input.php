@@ -13,11 +13,10 @@ class Input extends Component
      */
     public function __construct(
         public ?string $type,
-        public ?string $name,
-        public ?string $label,
+        public ?string $name = null,
+        public ?string $label = null,
         public ?string $value = null
-    )
-    {
+    ) {
         //
     }
 
@@ -26,6 +25,11 @@ class Input extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.input');
+        return match ($this->type) {
+            'errors' => view('components.input.errors'),
+            'submit' => view('components.input.submit'),
+            'switch' => view('components.input.switch'),
+            default => view('components.input')
+        };
     }
 }

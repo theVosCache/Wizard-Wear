@@ -27,7 +27,7 @@
                         <img src="{{ asset('img/ww-logo.png') }}" alt="Wizard Wear Logo" class="img-fluid" />
                     </div>
                     <div class="col-3">
-                        <img src="{{ asset('img/oom-logo.png') }}" alt="Wizard Wear Logo" class="img-fluid" />
+                        <img src="{{ asset('img/oom-logo.png') }}" alt="OrderOfMerlin Logo" class="img-fluid" />
                     </div>
                     <div class="col-12 text-center">
                         <h1 class="inkTitle">WizardWear - Order of Merlin</h1>
