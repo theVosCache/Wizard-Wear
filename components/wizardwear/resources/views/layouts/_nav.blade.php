@@ -8,7 +8,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav m-auto">
                 <li class="nav-item">
-                    <a href="{{ route('oom.root') }}" class="nav-link">Home</a>
+                    <a href="{{ route('root') }}" class="nav-link">Home</a>
                 </li>
             </ul>
         </div>

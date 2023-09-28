@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\Oom;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/', 'login');
+Route::redirect('/', 'login')->name('root');
 
 Auth::routes();
 
@@ -29,4 +31,6 @@ Route::get('/lang/{locale}', function (string $locale) {
     return redirect()->back();
 });
 
-Route::get('/dashboard', [\App\Http\Controllers\HomeController::class, 'index'])->name('root');
+Route::middleware('auth')->group(function () {
+    Route::get('/dashboard', [Oom\DashboardController::class, 'index'])->name('dashboard');
+});

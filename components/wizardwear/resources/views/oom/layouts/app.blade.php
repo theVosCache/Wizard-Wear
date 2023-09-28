@@ -35,7 +35,7 @@
                 </div>
             </div>
 
-            @include('layouts._nav')
+            @include('oom.layouts._nav')
 
             @yield('content')
         </div>
