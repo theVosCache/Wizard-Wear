@@ -12,9 +12,9 @@
                             @csrf
 
                             <x-input type="errors"/>
-                            <x-input type="email" name="email" label="Email Adres"/>
-                            <x-input type="password" name="password" label="Wachtwoord"/>
-                            <x-input type="switch" name="remember" label="Ingelogd Blijven"/>
+                            <x-input type="email" name="email" :label="__('form.email')"/>
+                            <x-input type="password" name="password" :label="__('form.password')"/>
+                            <x-input type="switch" name="remember" :label="__('keep signed in')"/>
                             <x-input type="submit" label="Inloggen"/>
 
                             <div class="row mb-0">

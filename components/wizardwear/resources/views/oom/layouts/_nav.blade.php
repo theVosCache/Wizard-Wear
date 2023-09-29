@@ -29,6 +29,17 @@
                             <li>
                                 <a class="dropdown-item" href="#">Something else here</a>
                             </li>
+                            {{-- @if(Auth::user()->hasRole('admin'))--}}
+                            @if(true)
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a href="{{ route('oom.admin.role.index') }}" class="dropdown-item">
+                                        Roles
+                                    </a>
+                                </li>
+                            @endif
                             <li>
                                 <hr class="dropdown-divider">
                             </li>

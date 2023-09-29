@@ -33,4 +33,8 @@ Route::get('/lang/{locale}', function (string $locale) {
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', [Oom\DashboardController::class, 'index'])->name('dashboard');
+
+    Route::prefix('admin')->as('admin.')->group(function(){
+        Route::resource('role', Oom\Admin\RoleController::class);
+    });
 });
