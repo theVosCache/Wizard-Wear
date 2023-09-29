@@ -41,6 +41,12 @@ main {
     height: auto;
 }
 
+img.oom-header{
+    width: auto;
+    height: 150px;
+    max-height: 200px !important;
+}
+
 /* WARNING ! This solution seems to not work on all navigators.
 This problem was reported to me on :
 https://stackoverflow.com/questions/14585101/old-paper-background-texture-with-just-css/
