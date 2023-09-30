@@ -20,19 +20,18 @@
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu">
-                            <li>
-                                <a class="dropdown-item" href="#">Action</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Another action</a>
-                            </li>
-                            <li>
-                                <a class="dropdown-item" href="#">Something else here</a>
-                            </li>
+                            {{-- <li>--}}
+                            {{--     <a class="dropdown-item" href="#">Action</a>--}}
+                            {{-- </li>--}}
                             {{-- @if(Auth::user()->hasRole('admin'))--}}
                             @if(true)
                                 <li>
                                     <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a href="{{ route('oom.admin.page.index') }}" class="dropdown-item">
+                                        Pages
+                                    </a>
                                 </li>
                                 <li>
                                     <a href="{{ route('oom.admin.role.index') }}" class="dropdown-item">
