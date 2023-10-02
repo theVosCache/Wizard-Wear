@@ -38,11 +38,11 @@ final class PackageServiceProvider extends ServiceProvider
         // $this->loadTranslationsFrom(__DIR__.'/../lang', 'courier');
 
         $this->publishes([
-            __DIR__.'/../public' => public_path('vendor/courier'),
+            __DIR__ . '/../public' => public_path('vendor/courier'),
         ], 'public');
 
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'ww');
+        $this->loadViewsFrom(__DIR__ . '/../resources/views', 'ww');
 
-         Blade::component('input', Input::class);
+        Blade::component('input', Input::class);
     }
 }
