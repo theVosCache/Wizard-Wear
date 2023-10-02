@@ -13,7 +13,10 @@ class Role extends Model
     public static array $roles = [
         'admin' => 'System Admin',
         'website_manager' => 'Website Manager',
-        'board' => 'Board'
+        'board' => 'Board',
+
+        'dnd_player' => 'Dungeon and Dragons player',
+        'dnd_dm' => 'Dungeon Master'
     ];
 
     public function users(): BelongsToMany
