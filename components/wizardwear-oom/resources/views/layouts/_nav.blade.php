@@ -11,11 +11,6 @@
                 <li class="nav-item">
                     <a href="{{ route('home') }}" class="nav-link">Home</a>
                 </li>
-
-
-                <li class="nav-item ms-auto">
-                    <a href="{{ route('register') }}" class="nav-link">Registeren</a>
-                </li>
             </ul>
 
             @auth
@@ -52,6 +47,9 @@
                 </ul>
             @else
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a href="{{ route('register') }}" class="nav-link">Registeren</a>
+                    </li>
                 </ul>
             @endauth
         </div>
