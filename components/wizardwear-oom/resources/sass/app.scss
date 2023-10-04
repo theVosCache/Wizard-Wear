@@ -1,0 +1,21 @@
+// Fonts
+@import url('https://fonts.bunny.net/css?family=Nunito');
+
+// Variables
+@import 'variables';
+
+// Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+@import "parchment";
+
+
+img.oom-header{
+    width: auto;
+    height: 150px;
+    max-height: 200px !important;
+}
+
+body{
+    background-color: #000;
+}
