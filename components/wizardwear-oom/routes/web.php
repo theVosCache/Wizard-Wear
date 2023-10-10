@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers as C;
+use App\Http\Controllers\Admin as A;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -19,6 +21,10 @@ Route::redirect('/', '/login');
 Auth::routes(['verify' => true]);
 
 Route::middleware(['auth', 'verified'])->group(function () {
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [C\HomeController::class, 'index'])->name('home');
+
+    Route::prefix('/admin')->as('admin.')->group(function(){
+        Route::resource('role', A\RoleController::class);
+    });
 });
 
