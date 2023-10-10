@@ -29,7 +29,7 @@
                                     <hr class="dropdown-divider">
                                 </li>
                                 <li>
-                                    <a href="#" class="dropdown-item">
+                                    <a href="{{ route('admin.role.index') }}" class="dropdown-item">
                                         Roles
                                     </a>
                                 </li>

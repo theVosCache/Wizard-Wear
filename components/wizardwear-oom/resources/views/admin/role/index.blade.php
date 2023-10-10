@@ -15,6 +15,7 @@
                                 <th>ID</th>
                                 <th>Name</th>
                                 <th>Slug</th>
+                                <th>Users</th>
                                 <th>Updated At</th>
                                 <th></th>
                             </tr>
@@ -27,12 +28,24 @@
                                     <td>{{ $role->name }}</td>
                                     <td>{{ $role->slug }}</td>
                                     <td>
+                                        <ul>
+                                            @foreach($role->users as $user)
+                                                <li>{{ $user->name }}</li>
+                                            @endforeach
+                                        </ul>
+                                    </td>
+                                    <td>
                                         Updated At: {{ $role->updated_at?->format('d-m-Y') }} <br>
                                         Created At: {{ $role->created_at?->format('d-m-Y') }}
                                     </td>
                                     <td>
-                                        <a href="#" class="btn btn-warning">Edit</a>
-                                        <a href="#" class="btn btn-danger m-2">Delete</a>
+                                        <a href="{{ route('admin.role.edit', $role) }}" class="btn btn-warning">Edit</a>
+                                        <form action="{{ route('admin.role.destroy', $role) }}" method="post" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+
+                                            <input type="submit" value="Delete" class="btn btn-danger ms-1">
+                                        </form>
                                     </td>
                                 </tr>
                             @endforeach
