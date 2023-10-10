@@ -20,11 +20,17 @@
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu">
-                            {{-- <li>--}}
-                            {{--     <a class="dropdown-item" href="#">Action</a>--}}
-                            {{-- </li>--}}
-                            {{-- @if(Auth::user()->hasRole('admin'))--}}
-                            @if(true)
+                            @if (Auth::user()->hasRole('dnd'))
+                                <li>
+                                    <hr class="dropdown-divider">
+                                </li>
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('dndCharacter.index') }}">
+                                        DnD Characters
+                                    </a>
+                                </li>
+                            @endif
+                            @if(Auth::user()->hasRole('admin'))
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
