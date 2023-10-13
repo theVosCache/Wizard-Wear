@@ -13,7 +13,13 @@
             @foreach($characters as $character)
                 <div class="col-4">
                     <div class="card">
-                        <div class="card-header">{{ $character->name }}</div>
+                        @if ($character->avatar)
+                            <img src="{{ $character->avatar->storage_path }}" alt="avatar" class="card-img-top">
+                        @endif
+                        <div class="card-header">
+                            <img src="{{ $character->houseCrest }}" alt="{{ $character->house }}" class="h-auto">
+                            {{ $character->name }}
+                        </div>
                         <div class="card-body">
                             hoi
                         </div>
