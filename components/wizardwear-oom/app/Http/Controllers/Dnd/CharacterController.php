@@ -28,7 +28,13 @@ class CharacterController extends Controller
      */
     public function create()
     {
-        //
+        $houses = [
+            'gryffindor' => 'Gryffindor',
+            'hufflepuff' => 'Hufflepuff',
+            'ravenclaw' => 'Ravenclaw',
+            'slytherin' => 'Slytherin'
+        ];
+        return view('dnd.character.create', compact('houses'));
     }
 
     /**
@@ -36,7 +42,19 @@ class CharacterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|min:3',
+            'house' => 'required|string'
+        ]);
+
+        $character = new DndCharacter;
+        $character->user_id = Auth::id();
+        $character->name = $request->name;
+        $character->house = $request->house;
+
+        $character->save();
+
+        return redirect()->route('dndCharacter.index');
     }
 
     /**

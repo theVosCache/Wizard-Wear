@@ -17,6 +17,7 @@ class RoleSeeder extends Seeder
         $users = User::all();
         $admin = Role::where('slug', Role::ADMIN);
         $board = Role::where('slug', Role::BOARD);
+        $dnd = Role::where('slug', Role::DND);
 
         if (!$admin->exists()){
             $role = new Role;
@@ -34,9 +35,17 @@ class RoleSeeder extends Seeder
             $role->save();
         }
 
+        if (!$dnd->exists()){
+            $role = new Role;
+            $role->name = ucfirst(Role::DND);
+            $role->slug = Role::DND;
+
+            $role->save();
+        }
+
         foreach ($users as $user){
             $user->roles()->sync([
-                $admin->first()->id, $board->first()->id
+                $admin->first()->id, $board->first()->id, $dnd->first()->id
             ]);
         }
     }

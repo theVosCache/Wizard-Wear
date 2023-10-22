@@ -30,6 +30,7 @@ class Input extends Component
             'submit'    => view('components.input.submit'),
             'boxes'     => view('components.input.boxes'),
             'switch'    => view('components.input.switch'),
+            'select'    => view('components.input.select'),
             default     => view('components.input')
         };
     }

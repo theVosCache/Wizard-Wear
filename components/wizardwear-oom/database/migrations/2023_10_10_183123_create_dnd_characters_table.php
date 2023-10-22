@@ -16,8 +16,16 @@ return new class extends Migration
             $table->foreignId('user_id');
             $table->string('name');
             $table->string('house');
-            $table->integer('level');
-            $table->json('data');
+
+            $table->integer('level')->default(1);
+            $table->integer('strength')->nullable();
+            $table->integer('dexterity')->nullable();
+            $table->integer('intelligence')->nullable();
+            $table->integer('wisdom')->nullable();
+            $table->integer('charisma')->nullable();
+            $table->integer('constitution')->nullable();
+
+            $table->json('data')->nullable();
             $table->timestamps();
             $table->softDeletes();
 
