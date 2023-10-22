@@ -40,6 +40,11 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(DndCharacter::class);
     }
 
+    public function dndSessions(): HasMany
+    {
+        return $this->hasMany(DndSession::class, 'dungeon_master_id');
+    }
+
     public function hasRole(string $slug): bool
     {
         return $this->roles()->where('slug', $slug)->count() === 1;
