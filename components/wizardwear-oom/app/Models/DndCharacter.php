@@ -14,6 +14,10 @@ class DndCharacter extends Model
 {
     use HasFactory, SoftDeletes;
 
+    protected $casts = [
+        'data' => 'json'
+    ];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);

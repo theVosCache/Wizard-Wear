@@ -21,7 +21,16 @@
                             {{ $character->name }}
                         </div>
                         <div class="card-body">
-                            hoi
+                            <p class="card-text">
+                                <small class="text-muted">Level / House</small><br>
+                                {{ $character->level }} / {{ $character->house }}
+                            </p>
+                            @foreach($character->data as $key => $value)
+                                <p class="card-text">
+                                    <small class="text-muted">{{ $key }}</small><br>
+                                    {{ $value }}
+                                </p>
+                            @endforeach
                         </div>
                     </div>
                 </div>
