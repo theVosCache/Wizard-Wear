@@ -13,6 +13,7 @@ class Role extends Model
     public const ADMIN = 'admin';
     public const BOARD = 'board-member';
     public const DND = 'dnd';
+    public const DM = 'dnd-dungeon-master';
 
     public function users(): BelongsToMany
     {

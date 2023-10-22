@@ -15,38 +15,25 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         $users = User::all();
-        $admin = Role::where('slug', Role::ADMIN);
-        $board = Role::where('slug', Role::BOARD);
-        $dnd = Role::where('slug', Role::DND);
+        $roles = [
+            'Admin' => Role::ADMIN,
+            'Board' => Role::BOARD,
+            'Dungeons and Dragons Player' => Role::DND,
+            'Dungeons and Dragons Dungeon Master' => Role::DM,
+        ];
 
-        if (!$admin->exists()){
-            $role = new Role;
-            $role->name = ucfirst(Role::ADMIN);
-            $role->slug = Role::ADMIN;
+        foreach ($roles as $name => $slug) {
+            if (!Role::where('slug', $slug)->exists()) {
+                $role = new Role;
+                $role->name = $name;
+                $role->slug = $slug;
 
-            $role->save();
-        }
-
-        if (!$board->exists()){
-            $role = new Role;
-            $role->name = ucfirst(Role::BOARD);
-            $role->slug = Role::BOARD;
-
-            $role->save();
-        }
-
-        if (!$dnd->exists()){
-            $role = new Role;
-            $role->name = ucfirst(Role::DND);
-            $role->slug = Role::DND;
-
-            $role->save();
+                $role->save();
+            }
         }
 
         foreach ($users as $user){
-            $user->roles()->sync([
-                $admin->first()->id, $board->first()->id, $dnd->first()->id
-            ]);
+            $user->roles()->sync(Role::all()->pluck('id'));
         }
     }
 }
