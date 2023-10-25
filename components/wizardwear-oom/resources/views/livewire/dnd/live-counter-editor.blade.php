@@ -46,6 +46,10 @@
                             value="{{ $hitPoints['total'] }}"
                         >
                     </td>
+                    <td x-data="{name: '{{ $name }}'}">
+                        <button x-on:click="$wire.shiftElement(name, 'up')" class="btn btn-secondary">Move Up</button>
+                        <button x-on:click="$wire.shiftElement(name, 'down')" class="btn btn-secondary">Move down</button>
+                    </td>
                 </tr>
             @endforeach
         @endif

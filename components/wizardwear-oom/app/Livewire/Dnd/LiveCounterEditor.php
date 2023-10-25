@@ -29,6 +29,48 @@ class LiveCounterEditor extends Component
         $this->session->save();
     }
 
+    public function shiftElement(string $name, string $direction): void
+    {
+        $data = $this->session->data;
+        $data['monsterList'] = $this->moveElement($data['monsterList'], $name, $direction);
+
+        $this->session->data = $data;
+        $this->session->save();
+    }
+
+    private function moveElement($array, $key, $direction): array
+    {
+        $keys = array_keys($array);
+        $values = array_values($array);
+
+        // Find the index of the element to move
+        $currentIndex = array_search($key, $keys);
+
+        // Check if the element exists and if it's not at the edge of the array
+        if ($currentIndex !== false) {
+            if (
+                ($direction === 'up' && $currentIndex > 0) ||
+                ($direction === 'down' && $currentIndex < count($array) - 1)
+            ) {
+                // Remove the element from the original position
+                $removedKey = array_splice($keys, $currentIndex, 1);
+                $removedValue = array_splice($values, $currentIndex, 1);
+
+                // Calculate the new position
+                $newIndex = $direction === 'up' ? $currentIndex - 1 : $currentIndex + 1;
+
+                // Insert the element at the new position
+                array_splice($keys, $newIndex, 0, $removedKey);
+                array_splice($values, $newIndex, 0, $removedValue);
+
+                // Reconstruct the associative array
+                $array = array_combine($keys, $values);
+            }
+        }
+
+        return $array;
+    }
+
     public function createNewEntry(): void
     {
         $data = $this->session->data;
