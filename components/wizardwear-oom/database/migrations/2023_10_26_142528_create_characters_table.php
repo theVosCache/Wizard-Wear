@@ -16,8 +16,9 @@ return new class extends Migration
             $table->uuid()->unique();
             $table->foreignId('user_id');
             $table->string('name');
-            $table->string('house');
+            $table->string('house')->nullable();
             $table->text('about')->nullable();
+            $table->json('data')->nullable();
             $table->timestamps();
             $table->softDeletes();
 

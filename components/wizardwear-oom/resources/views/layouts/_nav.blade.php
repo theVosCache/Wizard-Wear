@@ -39,13 +39,13 @@
                                 <hr class="dropdown-divider">
                             </li>
 
-                                <li class="dropdown-item">
-                                    <a href="{{ route('my-account') }}" class="nav-link">
-                                        My Account
-                                    </a>
-                                </li>
-                            <li class="dropdown-item">
-                                <a class="nav-link link-danger" href="#"
+                            <li>
+                                <a href="{{ route('my-account') }}" class="dropdown-item">
+                                    My Account
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item link-danger" href="#"
                                    onclick="document.getElementById('logout-form').submit()">Logout</a>
                             </li>
                         </ul>

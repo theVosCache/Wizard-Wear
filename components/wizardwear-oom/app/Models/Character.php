@@ -7,6 +7,7 @@ use App\Traits\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Character extends Model
 {
@@ -14,6 +15,11 @@ class Character extends Model
 
     public function getHouseCrestImgPathAttribute(): string
     {
-        return asset("/storage/" . $this->house . "-house-crest.webp");
+        $path = $this->house . "-house-crest.webp";
+        if (Storage::disk('public')->exists($path)) {
+            return Storage::disk('public')->url($path);
+        }
+
+        return Storage::disk('public')->url('hogwarts-crest.webp');
     }
 }

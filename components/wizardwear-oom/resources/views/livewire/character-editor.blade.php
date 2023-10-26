@@ -17,6 +17,7 @@
                             'hufflepuff' => 'bg-warning-subtle',
                             'ravenclaw' => 'bg-info-subtle',
                             'slytherin' => 'bg-success-subtle',
+                            default => 'bg-secondary-subtle'
                         }
                     @endphp
                     <li class="list-group-item @if($character->id === $user->default_character_id) {{ $bgColor }} @endif">
@@ -98,7 +99,7 @@
                             <label for="house" class="ms-auto">House</label>
                         </span>
                         <select id="house" wire:model="house" class="form-select">
-                            <option disabled selected></option>
+                            <option value="" selected></option>
                             <option value="gryffindor">Gryffindor</option>
                             <option value="hufflepuff">Hufflepuff</option>
                             <option value="ravenclaw">Ravenclaw</option>
