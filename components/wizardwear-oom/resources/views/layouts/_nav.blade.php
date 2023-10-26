@@ -24,11 +24,6 @@
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>
-                                <li>
-                                    <a class="dropdown-item" href="{{ route('dndCharacter.index') }}">
-                                        DnD Characters
-                                    </a>
-                                </li>
                             @endif
                             @if(Auth::user()->hasRole('admin'))
                                 <li>
