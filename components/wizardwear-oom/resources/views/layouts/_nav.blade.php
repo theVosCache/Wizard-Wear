@@ -39,6 +39,11 @@
                                 <hr class="dropdown-divider">
                             </li>
 
+                                <li class="dropdown-item">
+                                    <a href="{{ route('my-account') }}" class="nav-link">
+                                        My Account
+                                    </a>
+                                </li>
                             <li class="dropdown-item">
                                 <a class="nav-link link-danger" href="#"
                                    onclick="document.getElementById('logout-form').submit()">Logout</a>

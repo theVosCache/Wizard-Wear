@@ -1,7 +1,7 @@
 <div class="input-group mb-3">
     <span class="input-group-text col-3">
         <label for="{{ $name }}" class="ms-auto">
-            {{ $label }}
+            {!! $label !!} @if($attributes->has('required'))*@endif
         </label>
     </span>
     <input

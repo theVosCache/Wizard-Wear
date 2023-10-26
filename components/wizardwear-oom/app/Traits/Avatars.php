@@ -14,4 +14,14 @@ trait Avatars
     {
         return $this->morphOne(AvatarModel::class, 'attached');
     }
+
+    public function getAvatarPathAttribute(): string
+    {
+        return Storage::disk('public')->url($this->avatar->storage_path) ?? '';
+    }
+
+    public function getHasAvatarAttribute(): string
+    {
+        return !empty($this->avatar);
+    }
 }

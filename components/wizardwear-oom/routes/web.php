@@ -23,6 +23,8 @@ Auth::routes(['verify' => true]);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [C\HomeController::class, 'index'])->name('home');
+    Route::get('/my-account', [C\MyAccountController::class, 'show'])->name('my-account');
+    Route::put('/my-account', [C\MyAccountController::class, 'update'])->name('my-account.update');
 
 
     Route::prefix('/dnd')->as('dnd.')->group(function () {

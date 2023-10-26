@@ -18,7 +18,7 @@ class Avatar extends Model
 
     public static function store(UploadedFile $uploadedFile, object $attached): ?Avatar
     {
-        $storagePath = $uploadedFile->store('avatars/', ['disk' => 'public']);
+        $storagePath = $uploadedFile->store('avatars', ['disk' => 'public']);
 
         if ($storagePath === false){
             return null;

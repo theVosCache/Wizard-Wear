@@ -1,3 +1,3 @@
 <div class="input-group mb-3">
-    <input type="submit" value="{{ $label ?? 'save' }}" class="btn btn-primary form-control" />
+    <input type="submit" value="{{ $label ?? 'Save' }}" class="btn btn-primary form-control" />
 </div>
