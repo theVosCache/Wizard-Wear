@@ -24,10 +24,8 @@ Auth::routes(['verify' => true]);
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [C\HomeController::class, 'index'])->name('home');
 
-    Route::resource('dndCharacter', D\CharacterController::class);
 
     Route::prefix('/dnd')->as('dnd.')->group(function () {
-        Route::resource('session', D\SessionController::class);
     });
 
     Route::prefix('/admin')->as('admin.')->group(function () {
