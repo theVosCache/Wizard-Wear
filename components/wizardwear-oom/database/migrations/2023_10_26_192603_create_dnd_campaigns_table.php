@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('name');
             $table->dateTime('next_session')->nullable();
             $table->string('location')->nullable();
+            $table->string('invite_code')->nullable();
 
             $table->json('data')->nullable();
 

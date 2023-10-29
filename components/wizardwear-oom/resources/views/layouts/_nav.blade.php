@@ -11,10 +11,23 @@
                 <li class="nav-item">
                     <a href="{{ route('home') }}" class="nav-link">Home</a>
                 </li>
+
             </ul>
 
             @auth
                 <ul class="navbar-nav ms-auto">
+                    <li class="nav-item dropdown ms-auto">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Dnd
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ route('dnd.dnd-campaign.index') }}" class="dropdown-item">
+                                    Your Campaigns
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             {{ Auth::user()->name }}

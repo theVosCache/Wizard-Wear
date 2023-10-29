@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\DndCampaign;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
@@ -29,7 +30,7 @@ class DndCampaignPolicy
      */
     public function create(User $user): bool
     {
-        //
+        return $user->hasRole(Role::DM);
     }
 
     /**

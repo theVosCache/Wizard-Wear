@@ -28,6 +28,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
     Route::prefix('/dnd')->as('dnd.')->group(function () {
+        Route::resource('dnd-campaign', D\DndCampaignController::class);
     });
 
     Route::prefix('/admin')->as('admin.')->group(function () {
