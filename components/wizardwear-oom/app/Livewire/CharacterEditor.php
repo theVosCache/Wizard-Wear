@@ -64,8 +64,9 @@ class CharacterEditor extends Component
             $character->about = $this->about;
 
             if ($character->save()) {
-                Avatar::store($this->avatar, $character);
-
+                if ($this->avatar) {
+                    Avatar::store($this->avatar, $character);
+                }
                 $this->reset('name', 'house', 'about', 'avatar');
             }
         } else {

@@ -6,6 +6,7 @@ use App\Traits\Avatars;
 use App\Traits\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
@@ -17,6 +18,11 @@ class Character extends Model
     public function dndCharacter(): HasOne
     {
         return $this->hasOne(DndCharacter::class);
+    }
+
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class);
     }
 
     public function getHouseCrestImgPathAttribute(): string

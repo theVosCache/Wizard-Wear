@@ -10,12 +10,16 @@
 @import "parchment";
 
 
-img.oom-header{
+img.oom-header {
     width: auto;
     height: 150px;
     max-height: 200px !important;
 }
 
-body{
+body {
     background-color: #000;
+}
+
+table.table-bg-none {
+    --bs-table-bg: unset !important;
 }

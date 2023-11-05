@@ -28,6 +28,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
     Route::prefix('/dnd')->as('dnd.')->group(function () {
+        Route::get('join/dnd-campaign/{dndCampaign}', [D\DndCampaignController::class, 'join'])->name('dnd-campaign.join');
+        Route::post('join/dnd-campaign/{dndCampaign}', [D\DndCampaignController::class, 'joinHandle'])->name('dnd-campaign.join');
         Route::resource('dnd-campaign', D\DndCampaignController::class);
     });
 

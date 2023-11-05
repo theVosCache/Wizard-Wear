@@ -20,6 +20,7 @@ return new class extends Migration
             $table->dateTime('next_session')->nullable();
             $table->string('location')->nullable();
             $table->string('invite_code')->nullable();
+            $table->boolean('allow_players_to_join')->default(true);
 
             $table->json('data')->nullable();
 

@@ -23,7 +23,7 @@
                         <ul class="dropdown-menu">
                             <li>
                                 <a href="{{ route('dnd.dnd-campaign.index') }}" class="dropdown-item">
-                                    Your Campaigns
+                                    Dnd Campaigns
                                 </a>
                             </li>
                         </ul>

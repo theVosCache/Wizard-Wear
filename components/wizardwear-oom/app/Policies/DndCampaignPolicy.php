@@ -9,59 +9,51 @@ use Illuminate\Auth\Access\Response;
 
 class DndCampaignPolicy
 {
-    /**
-     * Determine whether the user can view any models.
-     */
     public function viewAny(User $user): bool
     {
-        //
+        return $user->hasRole(Role::DND) || $user->hasRole(Role::DM);
     }
 
-    /**
-     * Determine whether the user can view the model.
-     */
     public function view(User $user, DndCampaign $dndCampaign): bool
     {
-        //
+        return $dndCampaign->dungeon_master_id === $user->id;
     }
 
-    /**
-     * Determine whether the user can create models.
-     */
     public function create(User $user): bool
     {
         return $user->hasRole(Role::DM);
     }
 
-    /**
-     * Determine whether the user can update the model.
-     */
     public function update(User $user, DndCampaign $dndCampaign): bool
     {
-        //
+        return $dndCampaign->dungeon_master_id === $user->id;
     }
 
-    /**
-     * Determine whether the user can delete the model.
-     */
     public function delete(User $user, DndCampaign $dndCampaign): bool
     {
-        //
+        return $dndCampaign->dungeon_master_id === $user->id;
     }
 
-    /**
-     * Determine whether the user can restore the model.
-     */
     public function restore(User $user, DndCampaign $dndCampaign): bool
     {
-        //
+        return $dndCampaign->dungeon_master_id === $user->id;
     }
 
-    /**
-     * Determine whether the user can permanently delete the model.
-     */
     public function forceDelete(User $user, DndCampaign $dndCampaign): bool
     {
-        //
+        return $dndCampaign->dungeon_master_id === $user->id;
+    }
+
+    public function join(User $user, DndCampaign $dndCampaign): bool
+    {
+        if (!$dndCampaign->allow_players_to_join) {
+            return false;
+        }
+
+        if ($dndCampaign->dndCharacters->where('user_id', $user->id)->count() === 1) {
+            return false;
+        }
+
+        return true;
     }
 }
