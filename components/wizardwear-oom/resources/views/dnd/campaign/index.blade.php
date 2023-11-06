@@ -61,15 +61,18 @@
                                             Join
                                         </a>
                                     </div>
-                                @else
-                                    <div class="col">
-                                        <a href="#"
-                                           class="btn btn-info disabled" disabled>
-                                            Already Joined
-                                        </a>
-                                    </div>
                                 @endcan
                             </div>
+                            @cannot('join', $dndCampaign)
+                                <div class="row">
+                                    <div class="col-12">
+                                        <a href="{{ route('dnd.player-screen', $dndCampaign) }}"
+                                           class="btn btn-primary" target="_blank">
+                                            Player Screen
+                                        </a>
+                                    </div>
+                                </div>
+                            @endcannot
                         </div>
                     </div>
                 </div>

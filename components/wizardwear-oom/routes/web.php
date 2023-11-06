@@ -31,6 +31,8 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('join/dnd-campaign/{dndCampaign}', [D\DndCampaignController::class, 'join'])->name('dnd-campaign.join');
         Route::post('join/dnd-campaign/{dndCampaign}', [D\DndCampaignController::class, 'joinHandle'])->name('dnd-campaign.join');
         Route::resource('dnd-campaign', D\DndCampaignController::class);
+
+        Route::get('player-screen/{dndCampaign}', D\PlayerScreenController::class)->name('player-screen');
     });
 
     Route::prefix('/admin')->as('admin.')->group(function () {
