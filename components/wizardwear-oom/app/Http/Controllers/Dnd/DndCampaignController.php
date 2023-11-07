@@ -34,15 +34,17 @@ class DndCampaignController extends Controller
             'name' => 'required|string|min:3',
             'next_session' => 'nullable|date',
             'location' => 'nullable|string',
-            'invite_code' => 'required|string'
+            'invite_code' => 'required|string',
+            'allow_players_to_join' => 'nullable|bool'
         ]);
 
         $dndCampaign = new DndCampaign;
         $dndCampaign->dungeon_master_id = Auth::id();
         $dndCampaign->name = $request->name;
-        $dndCampaign->next_session = Carbon::parse($request->next_session);
+        $dndCampaign->next_session = ($request->next_session) ? Carbon::parse($request->next_session) : null;
         $dndCampaign->location = $request->location;
         $dndCampaign->invite_code = $request->invite_code;
+        $dndCampaign->allow_players_to_join = $request->allow_players_to_join;
 
         if ($dndCampaign->save()) {
             session()->flash('success', 'Campaign Created');
@@ -72,7 +74,23 @@ class DndCampaignController extends Controller
 
     public function update(Request $request, DndCampaign $dndCampaign)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|min:3',
+            'next_session' => 'nullable|date',
+            'location' => 'nullable|string',
+            'invite_code' => 'required|string',
+            'allow_players_to_join' => 'nullable|bool'
+        ]);
+
+        $dndCampaign->name = $request->name;
+        $dndCampaign->next_session = ($request->next_session) ? Carbon::parse($request->next_session) : null;
+        $dndCampaign->location = $request->location;
+        $dndCampaign->invite_code = $request->invite_code;
+        $dndCampaign->allow_players_to_join = $request->allow_players_to_join;
+
+        $dndCampaign->save();
+
+        return redirect()->route('dnd.dnd-campaign.show', $dndCampaign);
     }
 
     public function joinHandle(DndCampaign $dndCampaign, Request $request)

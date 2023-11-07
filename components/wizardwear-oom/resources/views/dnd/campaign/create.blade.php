@@ -14,6 +14,7 @@
                             <x-input type="datetime-local" name="next_session" label="Next Session" />
                             <x-input type="text" name="location" label="Location" />
                             <x-input type="text" name="invite_code" label="Invite code for player" required/>
+                            <x-input type="switch" name="allow_players_to_join" label="Can players join?" />
 
                             <x-input type="submit" />
                         </form>

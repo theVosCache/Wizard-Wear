@@ -17,6 +17,9 @@
                             <x-input type="text" name="location" :value="$dndCampaign->location" label="Location"/>
                             <x-input type="text" name="invite_code" label="Invite code for player"
                                      :value="$dndCampaign->invite_code" required/>
+                            <x-input type="switch" name="allow_players_to_join" label="Can players join?"
+                                     :checked="$dndCampaign->allow_players_to_join"
+                            />
 
                             <x-input type="submit"/>
                         </form>

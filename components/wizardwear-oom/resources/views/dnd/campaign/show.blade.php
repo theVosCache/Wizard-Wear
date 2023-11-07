@@ -23,15 +23,21 @@
                                 <span class="text-muted">Location</span><br>
                                 {{ $dndCampaign->location ?? '-' }} <br>
                                 <span class="text-muted">Invite Code</span><br>
-                                {{ $dndCampaign->invite_code ?? '-' }}
+                                {{ $dndCampaign->invite_code ?? '-' }}<br>
+                                <span class="text-muted">Players are allowed to join</span><br>
+                                @if($dndCampaign->allow_players_to_join)
+                                    <span class="text-success">YES</span>
+                                @else
+                                    <span class="text-danger">NO</span>
+                                @endif
                             </div>
 
                             <div class="col-6">
                                 <table class="table table-hover table-bg-none">
                                     <thead>
-                                    <th></th>
+                                    <th>Player</th>
                                     <th>House</th>
-                                    <th>Name</th>
+                                    <th>Character name</th>
                                     <th>About</th>
                                     </thead>
 
@@ -53,7 +59,9 @@
                                             </td>
                                             <td>
                                                 <img src="{{ $character->houseCrestImgPath }}"
-                                                     alt="{{ $character->house }}">
+                                                     alt="{{ $character->house }}"
+                                                    style="max-width: 100px"
+                                                >
                                             </td>
                                             <td>{{ $character->name }}</td>
                                             <td>{{ $character->about }}</td>
