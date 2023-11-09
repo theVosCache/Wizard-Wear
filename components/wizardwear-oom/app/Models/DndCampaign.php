@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Casts\DndCampaignMainDataCast;
 use App\Traits\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -15,6 +16,7 @@ class DndCampaign extends Model
 
     protected $casts = [
         'next_session' => 'datetime',
+        'data' => DndCampaignMainDataCast::class
     ];
 
     public function dungeonMaster(): BelongsTo

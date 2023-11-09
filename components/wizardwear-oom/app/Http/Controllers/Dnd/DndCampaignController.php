@@ -72,6 +72,11 @@ class DndCampaignController extends Controller
         return view('dnd.campaign.edit', compact('dndCampaign'));
     }
 
+    public function editData(DndCampaign $dndCampaign)
+    {
+        return view('dnd.campaign.edit_data', compact('dndCampaign'));
+    }
+
     public function update(Request $request, DndCampaign $dndCampaign)
     {
         $request->validate([

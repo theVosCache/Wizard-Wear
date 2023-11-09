@@ -28,8 +28,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
 
     Route::prefix('/dnd')->as('dnd.')->group(function () {
-        Route::get('join/dnd-campaign/{dndCampaign}', [D\DndCampaignController::class, 'join'])->name('dnd-campaign.join');
-        Route::post('join/dnd-campaign/{dndCampaign}', [D\DndCampaignController::class, 'joinHandle'])->name('dnd-campaign.join');
+        Route::get('dnd-campaign/{dndCampaign}/join', [D\DndCampaignController::class, 'join'])->name('dnd-campaign.join');
+        Route::post('dnd-campaign/{dndCampaign}/join', [D\DndCampaignController::class, 'joinHandle'])->name('dnd-campaign.join');
+
+        Route::get('dnd-campaign/{dndCampaign}/edit-data', [D\DndCampaignController::class, 'editData'])->name('dnd-campaign.edit-data');
+        Route::put('dnd-campaign/{dndCampaign}/edit-data', [D\DndCampaignController::class, 'updateData'])->name('dnd-campaign.update-data');
+
         Route::resource('dnd-campaign', D\DndCampaignController::class);
 
         Route::get('player-screen/{dndCampaign}', D\PlayerScreenController::class)->name('player-screen');

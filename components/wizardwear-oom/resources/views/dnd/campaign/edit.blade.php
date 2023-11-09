@@ -5,7 +5,7 @@
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">Create your new DnD Campaign</div>
+                    <div class="card-header">Edit DnD Campaign: {{ $dndCampaign->name }}</div>
                     <div class="card-body">
                         <form action="{{ route('dnd.dnd-campaign.update', $dndCampaign)  }}" method="post">
                             @csrf

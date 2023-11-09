@@ -10,14 +10,31 @@
             </thead>
 
             <tbody>
-                <td>Test</td>
-                <td>
-                    <div class="progress" role="progressbar">
-                        <div
-                            class="progress-bar bg-success"
-                            style="width: 100%">Healthy</div>
-                    </div>
-                </td>
+            @foreach($dndCampaign->data->monsterList as $monster)
+                <tr>
+                    <td>
+                        {{ $monster->name }} <br>
+                        <span class="text-muted">{{ $monster->monsterType }}</span>
+                    </td>
+                    <td>
+                        <div class="progress" role="progressbar">
+                            <div
+                                class="progress-bar {{ $monster->currentHitPointsColor() }}"
+                                style="width: {{ $monster->currentHitPointsPercentage() * 100 }}%">
+                                @if (!empty($monster->currentHitPointsPercentage()))
+                                    @if ($monster->currentHitPointsPercentage() > 0.8)
+                                        Healty
+                                    @elseif ($monster->currentHitPointsPercentage() > 0.25)
+                                        Hurt
+                                    @else
+                                        Wounded
+                                    @endif
+                                @endif
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            @endforeach
             </tbody>
         </table>
     </div>
