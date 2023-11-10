@@ -37,7 +37,7 @@
                 <div class="col-6">
                     <div class="input-group mb-3">
                         <label class="input-group-text" for="level">Level</label>
-                        <input type="number" class="form-control" id="level" wire:model="level">
+                        <input type="number" class="form-control" id="level" value="{{ $dndCharacter->level }}" disabled>
                     </div>
                     <div class="input-group mb-3">
                         <label class="input-group-text" for="initiative">Initiative</label>

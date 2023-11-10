@@ -22,7 +22,7 @@ class CharacterInformation extends Component
 
     public function resetFieldToCharacter(): void
     {
-        $this->level = $this->dndCharacter->level ?? 0;
+        $this->level = $this->dndCharacter->level ?? 1;
         $this->totalHitPoints = $this->dndCharacter->total_hit_points ?? 0;
         $this->initiative = $this->dndCharacter->initiative ?? 0;
         $this->strength = $this->dndCharacter->strength ?? 0;
@@ -36,7 +36,6 @@ class CharacterInformation extends Component
 
     public function saveFieldToCharacter(): void
     {
-        $this->dndCharacter->level = $this->level;
         $this->dndCharacter->total_hit_points = $this->totalHitPoints;
         $this->dndCharacter->initiative = $this->initiative;
         $this->dndCharacter->strength = $this->strength;

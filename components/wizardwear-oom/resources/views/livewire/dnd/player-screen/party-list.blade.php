@@ -12,7 +12,7 @@
             </thead>
 
             <tbody>
-            @foreach($partyCharacters as $character)
+            @foreach($partyList as $character)
                 <tr>
                     <td>{{ $character->level }}</td>
                     <td>{{ $character->character->name }}</td>

@@ -17,7 +17,7 @@
                         <span class="text-muted">{{ $monster->monsterType }}</span>
                     </td>
                     <td>
-                        <div class="progress" role="progressbar">
+                        <div class="progress h-100" role="progressbar">
                             <div
                                 class="progress-bar {{ $monster->currentHitPointsColor() }}"
                                 style="width: {{ $monster->currentHitPointsPercentage() * 100 }}%">
