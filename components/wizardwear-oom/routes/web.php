@@ -37,6 +37,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::resource('dnd-campaign', D\DndCampaignController::class);
 
         Route::get('player-screen/{dndCampaign}', D\PlayerScreenController::class)->name('player-screen');
+        Route::get('dm-screen/{dndCampaign}', D\DungeonMasterScreenController::class)->name('dm-screen');
     });
 
     Route::prefix('/admin')->as('admin.')->group(function () {
