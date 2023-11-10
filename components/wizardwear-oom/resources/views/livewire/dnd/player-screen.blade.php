@@ -1,7 +1,8 @@
 <div>
     <div class="row">
         <div class="col-4">
-            @include('livewire.dnd.player_screen.current_character_card', compact('dndCharacter'))
+            <livewire:dnd.player-screen.character-information
+                :dnd-character="$dndCharacter" />
             <div class="mt-3">
                 @include('livewire.dnd.player_screen.party_list', compact('partyCharacters'))
             </div>

@@ -36,14 +36,6 @@
                                         </a>
                                     </div>
                                 @endcan
-                                @can('update', $dndCampaign)
-                                    <div class="col">
-                                        <a href="{{ route('dnd.dnd-campaign.edit', $dndCampaign) }}"
-                                           class="btn btn-warning">
-                                            Edit
-                                        </a>
-                                    </div>
-                                @endcan
                                 @can('delete', $dndCampaign)
                                     <div class="col">
                                         <form action="{{ route('dnd.dnd-campaign.destroy', $dndCampaign) }}"
