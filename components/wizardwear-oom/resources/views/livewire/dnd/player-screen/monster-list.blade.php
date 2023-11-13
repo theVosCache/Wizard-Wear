@@ -18,9 +18,7 @@
                     </td>
                     <td>
                         <div class="progress h-100" role="progressbar">
-                            <div
-                                class="progress-bar {{ $monster->currentHitPointsColor() }}"
-                                style="width: {{ $monster->currentHitPointsPercentage() * 100 }}%">
+                            <div class="progress-bar {{ $monster->currentHitPointsColor() }} w-100">
                                 @if (!empty($monster->currentHitPointsPercentage()))
                                     @if ($monster->currentHitPointsPercentage() > 0.8)
                                         Healty
