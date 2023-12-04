@@ -5,7 +5,11 @@
             />
     </div>
 
-    <div class="offset-4 col-4">
+    <div class="col-4">
+        <livewire:dnd.dungeon-master-screen.potion-book />
+    </div>
+
+    <div class="col-4">
         <livewire:dnd.dungeon-master-screen.monster-list
             :dnd-campaign="$dndCampaign"
             />

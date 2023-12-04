@@ -19,11 +19,12 @@ return new class extends Migration
             $table->string('rarity')->nullable();
             $table->string('potion_type')->nullable();
             $table->integer('learned_in_year')->nullable();
-            $table->string('5e_equivalent')->nullable();
-            $table->string('effects')->nullable();
-            $table->string('flawed')->nullable();
-            $table->string('exceptional')->nullable();
+            $table->string('dnd_equivalent')->nullable();
+            $table->text('effects')->nullable();
+            $table->text('flawed')->nullable();
+            $table->text('exceptional')->nullable();
             $table->string('galleon_price')->nullable();
+            $table->softDeletes();
             $table->timestamps();
         });
     }
@@ -33,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('potions');
+        Schema::dropIfExists('dnd_potions');
     }
 };

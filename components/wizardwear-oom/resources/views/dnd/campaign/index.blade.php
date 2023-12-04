@@ -65,6 +65,16 @@
                                     </div>
                                 </div>
                             @endcannot
+                            @if($dndCampaign->dungeon_master_id === Auth::id())
+                                <div class="row mt-3">
+                                    <div class="col-12">
+                                        <a href="{{ route('dnd.dm-screen', $dndCampaign) }}"
+                                           class="btn btn-primary" target="_blank">
+                                            Dungeon Master Screen
+                                        </a>
+                                    </div>
+                                </div>
+                            @endif
                         </div>
                     </div>
                 </div>
