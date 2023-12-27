@@ -16,34 +16,34 @@
 
             @auth
                 <ul class="navbar-nav ms-auto">
-                    @if(Auth::user()->hasRole(\App\Models\Role::DM) || Auth::user()->hasRole(\App\Models\Role::DND))
-                        <li class="nav-item dropdown ms-auto">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                Dnd
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="{{ route('dnd.dnd-campaign.index') }}" class="dropdown-item">
-                                        Dnd Campaigns
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    @endif
-                    @if(Auth::user()->hasRole(\App\Models\Role::BOARD))
-                        <li class="nav-item dropdown ms-auto">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                                Admin
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="{{ route('admin.event.index') }}" class="dropdown-item">
-                                        Events Beheren
-                                    </a>
-                                </li>
-                            </ul>
-                        </li>
-                    @endif
+                    @role([Role::DM,Role::DND])
+                    <li class="nav-item dropdown ms-auto">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Dnd
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ route('dnd.dnd-campaign.index') }}" class="dropdown-item">
+                                    Dnd Campaigns
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    @endrole
+                    @role(Role::BOARD)
+                    <li class="nav-item dropdown ms-auto">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Admin
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ route('admin.event.index') }}" class="dropdown-item">
+                                    Events Beheren
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    @endrole
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             {{ Auth::user()->name }}

@@ -3,16 +3,24 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
 {
+    public function __construct()
+    {
+        $this->authorizeResource(Event::class);
+    }
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        //
+        $events = Event::all();
+
+        return view('admin.event.index', compact('events'));
     }
 
     /**
@@ -20,7 +28,7 @@ class EventController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.event.create');
     }
 
     /**
@@ -28,15 +36,34 @@ class EventController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required|string',
+            'description' => 'nullable|string',
+            'max_members' => 'nullable|integer',
+            'start' => 'nullable|date',
+            'end' => 'nullable|date'
+        ]);
+
+        $event = new Event;
+        $event->name = $request->name;
+        $event->description = $request->description;
+        $event->max_members = $request->max_members;
+        $event->start = $request->start;
+        $event->end = $request->end;
+
+        if ($event->save()) {
+            return redirect()->route('admin.event.show', $event);
+        } else {
+            return redirect()->back();
+        }
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function show(Event $event)
     {
-        //
+        return view('admin.event.show', compact('event'));
     }
 
     /**
