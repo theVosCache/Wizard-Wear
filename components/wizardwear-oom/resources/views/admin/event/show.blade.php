@@ -7,7 +7,10 @@
                 <div class="card">
                     <div class="card-header">Evenement: {{ $event->name }}</div>
                     <div class="card-body">
-                        <a href="{{ route('admin.event.edit', $event) }}" class="btn btn-warning float-end">Edit</a>
+                        <a href="#" onclick="document.getElementById('event-delete-form').submit()"
+                           class="btn btn-danger float-end">Delete</a>
+                        <a href="{{ route('admin.event.destroy', $event) }}"
+                           class="btn btn-warning float-end me-1">Edit</a>
 
                         <div class="row">
                             <div class="col-12">
@@ -26,4 +29,9 @@
             </div>
         </div>
     </div>
+
+    <form action="{{ route('admin.event.destroy', $event) }}" method="post" id="event-delete-form">
+        @csrf
+        @method('DELETE')
+    </form>
 @endsection
