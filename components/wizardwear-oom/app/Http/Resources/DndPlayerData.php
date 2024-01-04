@@ -11,8 +11,8 @@ use JsonSerializable;
 
 class DndPlayerData implements JsonSerializable
 {
-    private Collection $spells;
-    private Collection $potions;
+    public Collection $spells;
+    public Collection $potions;
 
     public function __construct()
     {
@@ -30,7 +30,7 @@ class DndPlayerData implements JsonSerializable
             $self->spells->add($spell);
         }
         foreach ($jsonDecoded['potions'] as $potionUuid) {
-            $potion = Spell::findByUuid($potionUuid);
+            $potion = Potion::findByUuid($potionUuid);
             $self->potions->add($potion);
         }
 
