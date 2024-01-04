@@ -2,6 +2,8 @@
 
 namespace App\Models;
 
+use App\Models\Dnd\DndCampaign;
+use App\Models\Dnd\DndCharacter;
 use App\Traits\Uuid;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

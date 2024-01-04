@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Dnd\PlayerScreen;
 
-use App\Models\DndCampaign;
+use App\Models\Dnd\DndCampaign;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Dnd\DndCharacter;
 use App\Traits\Avatars;
 use App\Traits\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;

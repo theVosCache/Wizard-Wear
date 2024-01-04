@@ -2,10 +2,9 @@
 
 namespace App\Policies;
 
-use App\Models\DndCampaign;
+use App\Models\Dnd\DndCampaign;
 use App\Models\Role;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class DndCampaignPolicy
 {

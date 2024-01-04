@@ -3,7 +3,7 @@
 namespace App\Livewire\Dnd;
 
 use App\Http\Resources\DndCampaignMonsterData;
-use App\Models\DndCampaign;
+use App\Models\Dnd\DndCampaign;
 use Livewire\Component;
 
 class CampaignMainDataEditor extends Component

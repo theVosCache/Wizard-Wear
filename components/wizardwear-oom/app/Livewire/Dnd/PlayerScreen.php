@@ -2,8 +2,8 @@
 
 namespace App\Livewire\Dnd;
 
-use App\Models\DndCampaign;
-use App\Models\DndCharacter;
+use App\Models\Dnd\DndCampaign;
+use App\Models\Dnd\DndCharacter;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;
 

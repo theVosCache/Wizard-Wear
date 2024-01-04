@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Dnd;
 
 use App\Http\Controllers\Controller;
-use App\Models\DndCampaign;
+use App\Models\Dnd\DndCampaign;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 

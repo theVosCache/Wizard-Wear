@@ -1,8 +1,12 @@
 @extends('layouts.app')
 
+@section('title')
+    DnD Campaigns - Order of Merlin
+@endsection
+
 @section('content')
     <div class="container">
-        @can('create', App\Models\DndCampaign::class)
+        @can('create', \App\Models\Dnd\DndCampaign::class)
             <div class="row">
                 <div class="col-12 text-end">
                     <a href="{{ route('dnd.dnd-campaign.create') }}" class="btn btn-success">Host a new Campaign</a>

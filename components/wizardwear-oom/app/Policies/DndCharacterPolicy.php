@@ -2,9 +2,8 @@
 
 namespace App\Policies;
 
-use App\Models\DndCharacter;
+use App\Models\Dnd\DndCharacter;
 use App\Models\User;
-use Illuminate\Auth\Access\Response;
 
 class DndCharacterPolicy
 {

@@ -4,8 +4,8 @@ namespace App\Http\Controllers\Dnd;
 
 use App\Http\Controllers\Controller;
 use App\Models\Character;
-use App\Models\DndCampaign;
-use App\Models\DndCharacter;
+use App\Models\Dnd\DndCampaign;
+use App\Models\Dnd\DndCharacter;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

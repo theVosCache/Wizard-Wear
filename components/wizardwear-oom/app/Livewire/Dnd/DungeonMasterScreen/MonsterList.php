@@ -3,7 +3,7 @@
 namespace App\Livewire\Dnd\DungeonMasterScreen;
 
 use App\Http\Resources\DndCampaignMonsterData;
-use App\Models\DndCampaign;
+use App\Models\Dnd\DndCampaign;
 use Illuminate\Contracts\View\View;
 use Livewire\Component;
 

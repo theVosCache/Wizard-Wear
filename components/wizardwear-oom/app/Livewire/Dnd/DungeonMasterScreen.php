@@ -2,7 +2,7 @@
 
 namespace App\Livewire\Dnd;
 
-use App\Models\DndCampaign;
+use App\Models\Dnd\DndCampaign;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Collection;
 use Livewire\Component;

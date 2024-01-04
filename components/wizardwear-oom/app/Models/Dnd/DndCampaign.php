@@ -1,8 +1,9 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Dnd;
 
 use App\Casts\DndCampaignMainDataCast;
+use App\Models\User;
 use App\Traits\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
