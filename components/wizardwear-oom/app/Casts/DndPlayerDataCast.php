@@ -2,12 +2,12 @@
 
 namespace App\Casts;
 
-use App\Http\Resources\DndCampaignMainData;
+use App\Http\Resources\DndPlayerData;
 use Illuminate\Contracts\Database\Eloquent\CastsAttributes;
 use Illuminate\Database\Eloquent\Model;
 use InvalidArgumentException;
 
-class DndCampaignMainDataCast implements CastsAttributes
+class DndPlayerDataCast implements CastsAttributes
 {
     /**
      * Cast the given value.
@@ -16,10 +16,10 @@ class DndCampaignMainDataCast implements CastsAttributes
     public function get(Model $model, string $key, mixed $value, array $attributes): mixed
     {
         if (empty($value)) {
-            return new DndCampaignMainData();
+            return new DndPlayerData();
         }
 
-        return DndCampaignMainData::createFromJson($value);
+        return DndPlayerData::createFromJson($value);
     }
 
     /**
@@ -28,8 +28,8 @@ class DndCampaignMainDataCast implements CastsAttributes
      */
     public function set(Model $model, string $key, mixed $value, array $attributes): mixed
     {
-        if (!$value instanceof DndCampaignMainData) {
-            throw new InvalidArgumentException('Value must be instance of DndCampaignMainData');
+        if (!$value instanceof DndPlayerData) {
+            throw new InvalidArgumentException('Value must be instance of DndPlayerData');
         }
 
         return json_encode($value);

@@ -2,6 +2,7 @@
 
 namespace App\Models\Dnd;
 
+use App\Casts\DndPlayerDataCast;
 use App\Models\Character;
 use App\Models\User;
 use App\Traits\Uuid;
@@ -15,6 +16,10 @@ class DndCharacter extends Model
     use HasFactory, SoftDeletes, Uuid;
 
     protected $table = 'dnd_characters';
+
+    protected $casts = [
+        'data' => DndPlayerDataCast::class
+    ];
 
     public function user(): BelongsTo
     {
