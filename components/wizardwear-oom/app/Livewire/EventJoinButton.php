@@ -10,7 +10,7 @@ class EventJoinButton extends Component
 {
     private Event $event;
 
-    public function mount(Event $event)
+    public function mount(Event $event): void
     {
         $this->event = $event;
     }

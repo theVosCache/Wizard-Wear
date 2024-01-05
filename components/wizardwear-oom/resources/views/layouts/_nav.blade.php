@@ -12,7 +12,7 @@
                     <a href="{{ route('home') }}" class="nav-link">Home</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ route('event.index') }}" class="nav-link">Event</a>
+                    <a href="{{ route('event.index') }}" class="nav-link">Events</a>
                 </li>
 
             </ul>
