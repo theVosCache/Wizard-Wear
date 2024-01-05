@@ -8,14 +8,14 @@
                         <button class="nav-link active"
                                 data-bs-toggle="tab" data-bs-target="#selected_spell"
                                 type="button" role="tab">
-                            Selected Potion
+                            Selected Spell
                         </button>
                     </li>
                     @for($i = 0; $i < 10; $i++)
                         <li class="nav-item me-1">
                             <button class="nav-link"
                                     data-bs-toggle="tab" data-bs-target="#level_{{ $i }}_spells"
-                                    type="button" role="tab">
+                                    type="button" role="tab" @disabled($spellList->where('level', $i)->count() === 0)>
                                 Level {{ $i }} Spells
                             </button>
                         </li>
@@ -26,73 +26,71 @@
                 <div class="tab-content p-3">
                     <div class="tab-pane active"
                          id="selected_spell" tabindex="0">
-                        <table class="table table-striped-rows">
-                            <tr>
-                                <th>Name</th>
-                                <td>{{ $spell?->name }} - {{ $spell?->description }}</td>
-                            </tr>
-                            <tr>
-                                <th>Dnd Equivalent</th>
-                                <td>{{ $spell?->dnd_equivalent }}</td>
-                            </tr>
-                            <tr>
-                                <th>School of Magic</th>
-                                <td>
-                                    {{ $spell?->school_of_magic }}
-                                    @if($spell?->is_school_of_magic_exclusive)
-                                        <sup class="text-danger">Exclusive</sup>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Level</th>
-                                <td>{{ $spell?->level }}</td>
-                            </tr>
-                            <tr>
-                                <th>
-                                    Concentration <br>
-                                    Dedication <br>
-                                    Ritual
-                                </th>
-                                <td>
-                                    @if($spell?->is_concentration)
-                                        <span class="text-success">Yes</span> <br>
-                                    @else
-                                        <span class="text-danger">No</span> <br>
-                                    @endif
-                                    @if($spell?->is_dedication)
-                                        <span class="text-success">Yes</span> <br>
-                                    @else
-                                        <span class="text-danger">No</span> <br>
-                                    @endif
-                                    @if($spell?->is_ritual)
-                                        <span class="text-success">Yes</span>
-                                    @else
-                                        <span class="text-danger">No</span>
-                                    @endif
-                                </td>
-                            </tr>
-                            <tr>
-                                <th>Casting Time</th>
-                                <td>{{ $spell?->casting_time }}</td>
-                            </tr>
-                            <tr>
-                                <th>Range</th>
-                                <td>{{ $spell?->range }}</td>
-                            </tr>
-                            <tr>
-                                <th>Duration</th>
-                                <td>{{ $spell?->duration }}</td>
-                            </tr>
-                            <tr>
-                                <th>Tags</th>
-                                <td>{{ $spell?->tags }}</td>
-                            </tr>
-                            <tr>
-                                <th>Effects</th>
-                                <td>{!! $spell?->effects !!}</td>
-                            </tr>
-                        </table>
+                        @if($spell)
+                            <table class="table table-striped-rows">
+                                <tr>
+                                    <th>Name</th>
+                                    <td>{{ $spell?->name }} - {{ $spell?->description }}</td>
+                                </tr>
+                                <tr>
+                                    <th>School of Magic</th>
+                                    <td>
+                                        {{ $spell?->school_of_magic }}
+                                        @if($spell?->is_school_of_magic_exclusive)
+                                            <sup class="text-danger">Exclusive</sup>
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Level</th>
+                                    <td>{{ $spell?->level }}</td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        Concentration <br>
+                                        Dedication <br>
+                                        Ritual
+                                    </th>
+                                    <td>
+                                        @if($spell?->is_concentration)
+                                            <span class="text-success">Yes</span> <br>
+                                        @else
+                                            <span class="text-danger">No</span> <br>
+                                        @endif
+                                        @if($spell?->is_dedication)
+                                            <span class="text-success">Yes</span> <br>
+                                        @else
+                                            <span class="text-danger">No</span> <br>
+                                        @endif
+                                        @if($spell?->is_ritual)
+                                            <span class="text-success">Yes</span>
+                                        @else
+                                            <span class="text-danger">No</span>
+                                        @endif
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Casting Time</th>
+                                    <td>{{ $spell?->casting_time }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Range</th>
+                                    <td>{{ $spell?->range }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Duration</th>
+                                    <td>{{ $spell?->duration }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Tags</th>
+                                    <td>{{ $spell?->tags }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Effects</th>
+                                    <td>{!! $spell?->effects !!}</td>
+                                </tr>
+                            </table>
+                        @endif
                     </div>
                     @for($i = 0; $i < 10; $i++)
                         <div class="tab-pane" id="level_{{ $i }}_spells" tabindex="0">
