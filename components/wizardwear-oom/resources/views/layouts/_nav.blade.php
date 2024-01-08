@@ -11,6 +11,9 @@
                 <li class="nav-item">
                     <a href="{{ route('home') }}" class="nav-link">Home</a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ route('event.index') }}" class="nav-link">Event</a>
+                </li>
 
             </ul>
 
@@ -40,6 +43,10 @@
                                 <a href="{{ route('admin.event.index') }}" class="dropdown-item">
                                     Events Beheren
                                 </a>
+                            </li><li>
+                                <a href="{{ route('admin.role.index') }}" class="dropdown-item">
+                                    Roles
+                                </a>
                             </li>
                         </ul>
                     </li>
@@ -49,25 +56,6 @@
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu">
-                            @if (Auth::user()->hasRole('dnd'))
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                            @endif
-                            @if(Auth::user()->hasRole('admin'))
-                                <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li>
-                                    <a href="{{ route('admin.role.index') }}" class="dropdown-item">
-                                        Roles
-                                    </a>
-                                </li>
-                            @endif
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-
                             <li>
                                 <a href="{{ route('my-account') }}" class="dropdown-item">
                                     My Account

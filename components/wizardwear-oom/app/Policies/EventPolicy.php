@@ -6,6 +6,7 @@ use App\Models\Event;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use Illuminate\Support\Facades\Route;
 
 class EventPolicy
 {
@@ -14,6 +15,10 @@ class EventPolicy
      */
     public function viewAny(User $user): bool
     {
+        if (Route::current()->getName() === 'event.index'){
+            return true;
+        }
+
         return $user->hasRole(Role::BOARD);
     }
 

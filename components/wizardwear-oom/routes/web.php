@@ -26,6 +26,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/my-account', [C\MyAccountController::class, 'show'])->name('my-account');
     Route::put('/my-account', [C\MyAccountController::class, 'update'])->name('my-account.update');
 
+    Route::prefix('/event')->as('event.')->group(function(){
+        Route::get('/', [C\EventController::class, 'index'])->name('index');
+    });
 
     Route::prefix('/dnd')->as('dnd.')->group(function () {
         Route::get('dnd-campaign/{dndCampaign}/join', [D\DndCampaignController::class, 'join'])->name('dnd-campaign.join');
