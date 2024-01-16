@@ -14,12 +14,15 @@ return new class extends Migration
         Schema::create('items', function (Blueprint $table) {
             $table->id();
             $table->uuid()->unique();
+            $table->foreignId('user_id');
 
             $table->string('name');
             $table->string('description')->nullable();
 
             $table->softDeletes();
             $table->timestamps();
+
+            $table->foreign('user_id')->references('id')->on('users');
         });
     }
 

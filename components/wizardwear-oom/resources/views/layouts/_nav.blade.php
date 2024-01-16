@@ -57,8 +57,13 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{{ route('my-account') }}" class="dropdown-item">
+                                <a href="{{ route('my-account.index') }}" class="dropdown-item">
                                     My Account
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('my-account.item.index') }}" class="dropdown-item">
+                                    My Items
                                 </a>
                             </li>
                             <li>

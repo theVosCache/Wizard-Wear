@@ -23,8 +23,13 @@ Auth::routes(['verify' => true]);
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [C\HomeController::class, 'index'])->name('home');
-    Route::get('/my-account', [C\MyAccountController::class, 'show'])->name('my-account');
-    Route::put('/my-account', [C\MyAccountController::class, 'update'])->name('my-account.update');
+
+    Route::prefix('/my-account')->as('my-account.')->group(function(){
+        Route::get('/', [C\MyAccountController::class, 'show'])->name('index');
+        Route::put('/', [C\MyAccountController::class, 'update'])->name('update');
+
+        Route::resource('item', C\ItemController::class);
+    });
 
     Route::prefix('/event')->as('event.')->group(function(){
         Route::get('/', [C\EventController::class, 'index'])->name('index');
