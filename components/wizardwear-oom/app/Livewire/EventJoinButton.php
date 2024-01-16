@@ -21,7 +21,7 @@ class EventJoinButton extends Component
 
         $this->joined = $this->user->events()
             ->withPivot('present')->where('event_id', $event->id)
-            ->first()->pivot->present;
+            ->first()?->pivot?->present ?? false;
     }
 
     public function joinEvent(): void
