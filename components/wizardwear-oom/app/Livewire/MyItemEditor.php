@@ -34,6 +34,27 @@ class MyItemEditor extends Component
         $this->items = $user->items->sortBy('name');
     }
 
+    public function editItem(string $itemUuid): void
+    {
+        $this->item = $this->items->where('uuid', $itemUuid)->first();
+        $this->title = sprintf(self::EDIT_TITLE, $this->item->name);
+        $this->name = $this->item->name;
+        $this->description = $this->item->description;
+    }
+
+    public function deleteItem(string $itemUuid): void
+    {
+        Item::findByUuid($itemUuid)?->delete();
+        $this->items = $this->user->items;
+    }
+
+    public function resetForm(): void
+    {
+        $this->title = self::ADD_TITLE;
+        $this->item = null;
+        $this->reset('name', 'description', 'avatar');
+    }
+
     public function saveNewItem(): void
     {
         $item = $this->item;

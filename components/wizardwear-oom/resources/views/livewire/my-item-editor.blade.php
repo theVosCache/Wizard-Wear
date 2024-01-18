@@ -1,9 +1,11 @@
 <div class="row">
     <div class="col-6">
         <div class="card">
-            <div class="card-header">{{ $title }}</div>
+            <div class="card-header text-center">
+                <h3 class="p-0 m-0">{{ $title }}</h3>
+            </div>
             <div class="card-body">
-                <button class="btn btn-warning mb-3">Reset</button>
+                <button class="btn btn-warning mb-3" wire:click="resetForm">Reset</button>
                 <form wire:submit="saveNewItem">
                     @if(!empty($avatar))
                         <div class="offset-3 mb-4">
@@ -19,8 +21,7 @@
                         </span>
                         <input type="file"
                                id="avatar" class="form-control"
-                               wire:model="avatar"
-                        >
+                               wire:model="avatar">
                     </div>
                     <div class="input-group mb-3">
                         <span class="input-group-text col-3">
@@ -30,8 +31,7 @@
                             type="text"
                             id="name" class="form-control"
                             placeholder="Name"
-                            wire:model="name"
-                        >
+                            wire:model="name">
                     </div>
 
                     <div class="input-group mb-3">
@@ -42,8 +42,7 @@
                             type="text"
                             id="description" class="form-control"
                             placeholder="Description"
-                            wire:model="description"
-                        >
+                            wire:model="description">
                     </div>
 
                     <button type="submit" class="btn btn-success form-control">Save</button>
@@ -66,16 +65,26 @@
                     <tbody>
                     @foreach($items as $item)
                         <tr>
-                            <td rowspan="2">
+                            <td>
                                 <img src="{{ $item->avatarPath }}" alt="image of {{ $item->name }}"
                                      class="img-thumbnail mh-150">
                             </td>
-                            <td>{{ $item->name }}</td>
-                            <td></td>
-                        </tr>
-                        <tr>
-                            <td>{{ $item->description }}</td>
-                            <td></td>
+                            <td>
+                                {{ $item->name }} <br>
+                                {{ $item->description }}
+                            </td>
+                            <td>
+                                <button
+                                    class="btn btn-warning form-control"
+                                    wire:click="editItem('{{ $item->uuid }}')">
+                                    Edit
+                                </button>
+                                <button
+                                    class="btn btn-danger form-control mt-2"
+                                    wire:click="deleteItem('{{ $item->uuid }}')">
+                                    Delete
+                                </button>
+                            </td>
                         </tr>
                     @endforeach
                     </tbody>
