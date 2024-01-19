@@ -18,7 +18,6 @@
                                     @endif
                                 </div>
                                 <div class="col-12 mt-3">
-                                    <livewire:event-join-button :$event/>
                                 </div>
                             </div>
                         </div>
