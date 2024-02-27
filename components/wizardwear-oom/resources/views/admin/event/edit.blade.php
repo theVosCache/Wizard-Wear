@@ -17,7 +17,7 @@
                             <x-input type="number" name="max_members" label="Maximaal aantal order leden die mee kunnen"
                                      :value="$event->max_members"/>
                             <x-input type="date" name="start" label="Start datum evenement"
-                                     :value="$event->start?->format('Y-m-d')"/>
+                                     :value="$event->start?->format('Y-m-d')" required/>
                             <x-input type="date" name="end" label="Eind datum evenement"
                                      :value="$event->end?->format('Y-m-d')"/>
 

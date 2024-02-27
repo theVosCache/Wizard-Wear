@@ -33,6 +33,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
 
     Route::prefix('/event')->as('event.')->group(function(){
         Route::get('/', [C\EventController::class, 'index'])->name('index');
+        Route::get('/{event}', [C\EventController::class, 'show'])->name('show');
     });
 
     Route::prefix('/dnd')->as('dnd.')->group(function () {

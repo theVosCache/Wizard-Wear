@@ -13,7 +13,7 @@
                             <x-input type="text" name="name" label="Evenement naam" required/>
                             <x-input type="textarea" name="description" label="Omschrijving"/>
                             <x-input type="number" name="max_members" label="Maximaal aantal order leden die mee kunnen" />
-                            <x-input type="date" name="start" label="Start datum evenement"/>
+                            <x-input type="date" name="start" label="Start datum evenement" required/>
                             <x-input type="date" name="end" label="Eind datum evenement"/>
 
                             <x-input type="submit" />

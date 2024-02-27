@@ -18,6 +18,11 @@
                                     @endif
                                 </div>
                                 <div class="col-12 mt-3">
+                                    @if($event->isOpen)
+                                        <a class="btn btn-success" href="{{ route('event.show', $event) }}">
+                                            Show event / Sign up for event
+                                        </a>
+                                    @endif
                                 </div>
                             </div>
                         </div>

@@ -13,12 +13,14 @@ class EventController extends Controller
         $this->authorizeResource(Event::class);
     }
 
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
         $events = Event::where('start', '>', Carbon::now())->get();
         return view('event.index', compact('events'));
+    }
+
+    public function show(Event $event)
+    {
+        return view('event.show', compact('event'))
     }
 }

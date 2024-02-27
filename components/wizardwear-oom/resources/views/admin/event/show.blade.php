@@ -9,7 +9,7 @@
                     <div class="card-body">
                         <a href="#" onclick="document.getElementById('event-delete-form').submit()"
                            class="btn btn-danger float-end">Delete</a>
-                        <a href="{{ route('admin.event.destroy', $event) }}"
+                        <a href="{{ route('admin.event.edit', $event) }}"
                            class="btn btn-warning float-end me-1">Edit</a>
 
                         <div class="row">

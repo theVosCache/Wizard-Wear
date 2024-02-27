@@ -40,7 +40,7 @@ class EventController extends Controller
             'name' => 'required|string',
             'description' => 'nullable|string',
             'max_members' => 'nullable|integer',
-            'start' => 'nullable|date',
+            'start' => 'required|date',
             'end' => 'nullable|date'
         ]);
 

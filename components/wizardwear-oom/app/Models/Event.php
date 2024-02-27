@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Carbon\Carbon;
 use App\Traits\Uuid;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -20,5 +21,22 @@ class Event extends Model
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class);
+    }
+
+    public function getIsOpenAttribute(): bool
+    {
+        $open = true;
+
+        if (Carbon::now() > $this->start){
+            $open = false;
+        }
+
+        if (!empty($this->max_members)){
+            if (count($this->users) > $this->max_members){
+                $open = false;
+            }
+        }
+
+        return $open;
     }
 }
