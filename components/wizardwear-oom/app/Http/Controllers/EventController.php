@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Event;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
@@ -21,6 +22,7 @@ class EventController extends Controller
 
     public function show(Event $event)
     {
-        return view('event.show', compact('event'))
+        $items = Auth::user()->items;
+        return view('event.show', compact('event', 'items'));
     }
 }
