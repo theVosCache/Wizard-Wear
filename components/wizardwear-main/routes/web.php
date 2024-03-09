@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers as C;
+use App\Http\Controllers\Admin as A;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,7 @@ use App\Http\Controllers as C;
 
 Auth::routes();
 Route::get('/', C\HomeController::class)->name('root');
+
+Route::middleware('auth')->prefix('admin')->as('admin.')->group(function(){
+   Route::get('/', A\DashboardController::class)->name('dashboard');
+});
