@@ -1,0 +1,56 @@
+{
+    "name": "thevoscache/editor",
+    "description": "Livewire block based editor",
+    "keywords": [
+        "theVosCache",
+        "laravel",
+        "editor"
+    ],
+    "homepage": "https://github.com/thevoscache/editor",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Matthijs De vos",
+            "email": "m.devos96@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": "^8.1",
+        "spatie/laravel-package-tools": "^1.14.0",
+        "illuminate/contracts": "^10.0"
+    },
+    "require-dev": {
+    },
+    "autoload": {
+        "psr-4": {
+            "TheVosCache\\Editor\\": "src/",
+            "TheVosCache\\Editor\\Database\\Factories\\": "database/factories/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+        }
+    },
+    "scripts": {
+    },
+    "config": {
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true,
+            "phpstan/extension-installer": true
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "TheVosCache\\Editor\\EditorServiceProvider"
+            ],
+            "aliases": {
+                "Editor": "TheVosCache\\Editor\\Facades\\Editor"
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
