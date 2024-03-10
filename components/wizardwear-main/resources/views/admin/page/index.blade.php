@@ -32,6 +32,9 @@
                                             <td>{{ $page->path }}</td>
                                             <td>{{ $page->title }}</td>
                                             <td>count the blocks</td>
+                                            <td>
+                                                <a href="{{ route('admin.page.show', $page) }}" class="btn btn-success">Show</a>
+                                            </td>
                                         </tr>
                                     @endforeach
                                     </tbody>

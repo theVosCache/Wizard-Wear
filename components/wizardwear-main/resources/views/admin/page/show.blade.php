@@ -7,9 +7,7 @@
                 <div class="card">
                     <div class="card-header">Page: {{ $page->title }} (path: {{ $page->path }})</div>
                     <div class="card-body">
-                        @livewire('dropblockeditor', [
-                            'title' => 'Page Content',
-                        ])
+
                     </div>
                 </div>
             </div>

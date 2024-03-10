@@ -24,7 +24,7 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-12 text-center">
-                        <img src="{{ asset('img/ww-logo.png') }}" alt="Wizard Wear Logo" class="oom-header" />
+                        <img src="{{ asset('img/ww-logo.png') }}" alt="Wizard Wear Logo" class="oom-header mx-auto" />
                     </div>
                     <div class="col-12 text-center">
                         <h1 class="inkTitle">WizardWear</h1>
