@@ -20,4 +20,5 @@ Route::get('/', C\HomeController::class)->name('root');
 
 Route::middleware('auth')->prefix('admin')->as('admin.')->group(function(){
    Route::get('/', A\DashboardController::class)->name('dashboard');
+   Route::resource('page', A\PageController::class);
 });
