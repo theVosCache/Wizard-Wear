@@ -31,7 +31,7 @@
                                             <td>{{ $page->user?->name }}</td>
                                             <td>{{ $page->path }}</td>
                                             <td>{{ $page->title }}</td>
-                                            <td>count the blocks</td>
+                                            <td>{{ $page->blockCount }}</td>
                                             <td>
                                                 <a href="{{ route('admin.page.show', $page) }}" class="btn btn-success">Show</a>
                                             </td>

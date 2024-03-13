@@ -7,7 +7,10 @@
                 <div class="card">
                     <div class="card-header">Page: {{ $page->title }} (path: {{ $page->path }})</div>
                     <div class="card-body">
-                        <livewire:block-editor :model="$page"/>
+                        <livewire:block-editor
+                            :model="$page"
+                            :redirectUrl="route('admin.page.index')"
+                        />
                     </div>
                 </div>
             </div>

@@ -16,4 +16,11 @@ class Page extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getBlockCountAttribute(): ?int
+    {
+        return count(
+            json_decode($this->blocks, true)
+        );
+    }
 }

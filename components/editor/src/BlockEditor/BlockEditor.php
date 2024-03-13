@@ -12,6 +12,7 @@ class BlockEditor extends Component
 {
     public array $blocks = [];
     public ?Model $model;
+    public ?string $redirectUrl;
 
     public array $availableBlocks = [
         HeadingBlock::class
@@ -25,11 +26,12 @@ class BlockEditor extends Component
         }
 
         if (!empty($this->model)) {
-            $this->blocks = json_decode(json: $this->model->blocks, associative: true);
+            $decodedBlocks = json_decode(json: $this->model->blocks, associative: true);
+            $this->blocks = $decodedBlocks ?? [];
         }
     }
 
-    public function save()
+    public function save(): void
     {
         if (empty($this->model)) {
             return;
@@ -37,6 +39,10 @@ class BlockEditor extends Component
 
         $this->model->blocks = json_encode($this->blocks);
         $this->model->save();
+
+        if (!empty($this->redirectUrl)){
+            $this->redirect($this->redirectUrl);
+        }
     }
 
     #[On(event: 'editor-add-block')]
