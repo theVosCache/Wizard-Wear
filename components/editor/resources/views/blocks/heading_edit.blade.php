@@ -5,7 +5,7 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 mb-2">
-                        <select class="form-select">
+                        <select class="form-select" wire:model="size" wire:change="change">
                             <option disabled>Select Heading</option>
                             <option value="h1" @selected($size === 'h1')>Heading 1</option>
                             <option value="h2" @selected($size === 'h2')>Heading 2</option>
@@ -17,7 +17,8 @@
                     </div>
                     <div class="col-12">
                         <input type="text" class="form-control"
-                               placeholder="Enter Text here....." value="{{ $text }}">
+                               placeholder="Enter Text here....."
+                               wire:model="text" wire:change="change">
                     </div>
                 </div>
             </div>

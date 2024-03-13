@@ -5,6 +5,7 @@ namespace TheVosCache\Editor;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 use TheVosCache\Editor\BlockEditor\BlockEditor;
+use TheVosCache\Editor\BlockEditor\BlockLibrary;
 use TheVosCache\Editor\BlockEditor\Blocks\HeadingBlock;
 
 class EditorServiceProvider extends ServiceProvider

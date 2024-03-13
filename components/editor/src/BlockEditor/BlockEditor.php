@@ -21,13 +21,37 @@ class BlockEditor extends Component
     {
         if (!empty($jsonBlocks)) {
             $this->blocks = json_decode(json: $jsonBlocks, associative: true);
+            return;
+        }
+
+        if (!empty($this->model)) {
+            $this->blocks = json_decode(json: $this->model->blocks, associative: true);
         }
     }
 
-    #[On('editor-add-block')]
+    public function save()
+    {g
+        if (empty($this->model)) {
+            return;
+        }
+
+        $this->model->blocks = json_encode($this->blocks);
+        $this->model->save();
+    }
+
+    #[On(event: 'editor-add-block')]
     public function addBlock(array $blockData): void
     {
         $this->blocks[] = $blockData;
+    }
+
+    #[On(event: 'block-updated')]
+    public function blockUpdated(array $blockUpdatedEvent): void
+    {
+        $index = $blockUpdatedEvent['index'];
+        $data = $blockUpdatedEvent['data'];
+
+        $this->blocks[$index]['data'] = $data;
     }
 
     public function render(): View

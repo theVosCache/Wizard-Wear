@@ -8,11 +8,12 @@ use Livewire\Component;
 class HeadingBlock extends Component
 {
     public static array $config = [
-        'type' => "Heading",
+        'type' => "heading-block",
         'icon' => 'fa-heading',
         'isContainer' => false
     ];
 
+    public int $index;
     public string $renderMethod;
     public string $size;
     public string $text;
@@ -20,12 +21,31 @@ class HeadingBlock extends Component
     public function addBlockToEditor(): void
     {
         $this->dispatch('editor-add-block', [
-            "type" => $this::class,
+            "type" => "heading-block",
             "data" => [
-                'size' => '',
-                'text' => '',
+                'size' => 'h2',
+                'text' => 'placeholder',
             ]
         ]);
+    }
+
+    public function change(): void
+    {
+        $this->dispatch('block-updated', [
+            'index' => $this->index,
+            'data' => [
+                'size' => $this->size,
+                'text' => $this->text
+            ]
+        ]);
+    }
+
+    public function mount(?array $data = null): void
+    {
+        if (!empty($data)){
+            $this->size = $data['size'];
+            $this->text = $data['text'];
+        }
     }
 
     public function render(): View

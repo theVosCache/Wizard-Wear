@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header">Page: {{ $page->title }} (path: {{ $page->path }})</div>
                     <div class="card-body">
-                        <livewire:block-editor/>
+                        <livewire:block-editor :model="$page"/>
                     </div>
                 </div>
             </div>
