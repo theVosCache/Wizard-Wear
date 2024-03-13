@@ -30,7 +30,7 @@ class BlockEditor extends Component
     }
 
     public function save()
-    {g
+    {
         if (empty($this->model)) {
             return;
         }
