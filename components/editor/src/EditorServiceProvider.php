@@ -5,8 +5,8 @@ namespace TheVosCache\Editor;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 use TheVosCache\Editor\BlockEditor\BlockEditor;
-use TheVosCache\Editor\BlockEditor\BlockLibrary;
 use TheVosCache\Editor\BlockEditor\Blocks\HeadingBlock;
+use TheVosCache\Editor\BlockEditor\Blocks\TextBlock;
 
 class EditorServiceProvider extends ServiceProvider
 {
@@ -16,5 +16,6 @@ class EditorServiceProvider extends ServiceProvider
 
         Livewire::component('block-editor', BlockEditor::class);
         Livewire::component('heading-block', HeadingBlock::class);
+        Livewire::component('text-block', TextBlock::class);
     }
 }

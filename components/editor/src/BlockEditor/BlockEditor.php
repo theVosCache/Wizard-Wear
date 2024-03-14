@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use Livewire\Attributes\On;
 use Livewire\Component;
 use TheVosCache\Editor\BlockEditor\Blocks\HeadingBlock;
+use TheVosCache\Editor\BlockEditor\Blocks\TextBlock;
 
 class BlockEditor extends Component
 {
@@ -15,7 +16,8 @@ class BlockEditor extends Component
     public ?string $redirectUrl;
 
     public array $availableBlocks = [
-        HeadingBlock::class
+        HeadingBlock::class,
+        TextBlock::class
     ];
 
     public function mount(?string $jsonBlocks = null): void
