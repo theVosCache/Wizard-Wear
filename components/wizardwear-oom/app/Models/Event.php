@@ -14,11 +14,6 @@ class Event extends Model
 {
     use HasFactory, SoftDeletes, Uuid;
 
-    protected $casts = [
-        'start' => 'datetime',
-        'end' => 'datetime'
-    ];
-
     public function users(): BelongsToMany
     {
         return $this->belongsToMany(User::class)
@@ -40,5 +35,13 @@ class Event extends Model
         }
 
         return $open;
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'start' => 'datetime',
+            'end' => 'datetime'
+        ];
     }
 }

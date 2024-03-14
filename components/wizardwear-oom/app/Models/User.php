@@ -29,11 +29,6 @@ class User extends Authenticatable implements MustVerifyEmail
         'remember_token',
     ];
 
-    protected $casts = [
-        'email_verified_at' => 'datetime',
-        'password' => 'hashed',
-    ];
-
     public function defaultCharacter(): BelongsTo
     {
         return $this->belongsTo(Character::class);
@@ -72,5 +67,13 @@ class User extends Authenticatable implements MustVerifyEmail
     public function hasRole(string $slug): bool
     {
         return $this->roles()->where('slug', $slug)->count() === 1;
+    }
+
+    protected function casts(): array
+    {
+        return [
+            'email_verified_at' => 'datetime',
+            'password' => 'hashed',
+        ];
     }
 }
