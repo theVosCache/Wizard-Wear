@@ -26,8 +26,7 @@ class BlockEditor extends Component
         }
 
         if (!empty($this->model)) {
-            $decodedBlocks = json_decode(json: $this->model->blocks, associative: true);
-            $this->blocks = $decodedBlocks ?? [];
+            $this->blocks = $this->model->blocks ?? [];
         }
     }
 
@@ -37,7 +36,7 @@ class BlockEditor extends Component
             return;
         }
 
-        $this->model->blocks = json_encode($this->blocks);
+        $this->model->blocks = $this->blocks;
         $this->model->save();
 
         if (!empty($this->redirectUrl)){

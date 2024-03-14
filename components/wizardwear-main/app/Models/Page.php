@@ -12,15 +12,17 @@ class Page extends Model
 {
     use HasFactory, Uuid, SoftDeletes;
 
+    protected $casts = [
+        'blocks' => 'json'
+    ];
+
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(related: User::class);
     }
 
-    public function getBlockCountAttribute(): ?int
+    public function getBlockCountAttribute(): int
     {
-        return count(
-            json_decode($this->blocks, true)
-        );
+        return count(value: $this->blocks);
     }
 }

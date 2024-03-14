@@ -2,16 +2,16 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Welkom</div>
-
-                <div class="card-body">
-                    Hoi
-                </div>
+    <div class="row justify-content-center text-center">
+        @foreach($blocks as $block)
+            <div class="col-12">
+                <livewire:dynamic-component
+                    :component="$block['type']"
+                    renderMethod="render"
+                    :data="$block['data']"
+                    wire:key="{{ uniqid() }}"/>
             </div>
-        </div>
+        @endforeach
     </div>
 </div>
 @endsection
