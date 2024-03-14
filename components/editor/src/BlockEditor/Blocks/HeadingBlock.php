@@ -13,8 +13,8 @@ class HeadingBlock extends Component
         'isContainer' => false
     ];
 
-    public int $index;
-    public string $renderMethod;
+    public ?int $index;
+    public ?string $renderMethod = null;
     public string $size;
     public string $text;
 
@@ -51,13 +51,13 @@ class HeadingBlock extends Component
     public function render(): View
     {
         if ($this->renderMethod === 'lib'){
-            return view('editor::blocks.heading_lib');
+            return view('editor::blocks.heading_block.lib');
         }
 
         if ($this->renderMethod === 'edit'){
-            return view('editor::blocks.heading_edit');
+            return view('editor::blocks.heading_block.edit');
         }
 
-        return view('editor::blocks.heading');
+        return view('editor::blocks.heading_block.render');
     }
 }
