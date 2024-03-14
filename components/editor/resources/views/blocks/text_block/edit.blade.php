@@ -5,7 +5,10 @@
             <div class="card-body">
                 <div class="row">
                     <div class="col-12 mb-2">
-                        <textarea wire:model="text" wire:change="change" class="form-control"></textarea>
+                        <textarea
+                            wire:model="text"
+                            wire:change="change"
+                            class="form-control"></textarea>
                     </div>
                 </div>
             </div>
