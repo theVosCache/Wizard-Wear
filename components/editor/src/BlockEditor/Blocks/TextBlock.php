@@ -9,7 +9,7 @@ class TextBlock extends Component
 {
     public static array $config = [
         'type' => "text-block",
-        'icon' => 'fa-text',
+        'icon' => 'fa-align-center',
         'isContainer' => false
     ];
 
