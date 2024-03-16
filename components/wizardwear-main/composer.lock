@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "968f73bcf5520ee401d641d0d79555ec",
+    "content-hash": "adc1fb088ebaf1650cc004f4af342f62",
     "packages": [
         {
             "name": "brick/math",
@@ -1826,6 +1826,81 @@
                 }
             ],
             "time": "2024-01-28T23:22:08+00:00"
+        },
+        {
+            "name": "livewire/livewire",
+            "version": "v3.4.9",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/livewire/livewire.git",
+                "reference": "c65b3f0798ab2c9338213ede3588c3cdf4e6fcc0"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/livewire/livewire/zipball/c65b3f0798ab2c9338213ede3588c3cdf4e6fcc0",
+                "reference": "c65b3f0798ab2c9338213ede3588c3cdf4e6fcc0",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/database": "^10.0|^11.0",
+                "illuminate/routing": "^10.0|^11.0",
+                "illuminate/support": "^10.0|^11.0",
+                "illuminate/validation": "^10.0|^11.0",
+                "league/mime-type-detection": "^1.9",
+                "php": "^8.1",
+                "symfony/http-kernel": "^6.2|^7.0"
+            },
+            "require-dev": {
+                "calebporzio/sushi": "^2.1",
+                "laravel/framework": "^10.0|^11.0",
+                "laravel/prompts": "^0.1.6",
+                "mockery/mockery": "^1.3.1",
+                "orchestra/testbench": "8.20.0|^9.0",
+                "orchestra/testbench-dusk": "8.20.0|^9.0",
+                "phpunit/phpunit": "^10.4",
+                "psy/psysh": "^0.11.22|^0.12"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Livewire\\LivewireServiceProvider"
+                    ],
+                    "aliases": {
+                        "Livewire": "Livewire\\Livewire"
+                    }
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/helpers.php"
+                ],
+                "psr-4": {
+                    "Livewire\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Caleb Porzio",
+                    "email": "calebporzio@gmail.com"
+                }
+            ],
+            "description": "A front-end framework for Laravel.",
+            "support": {
+                "issues": "https://github.com/livewire/livewire/issues",
+                "source": "https://github.com/livewire/livewire/tree/v3.4.9"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/livewire",
+                    "type": "github"
+                }
+            ],
+            "time": "2024-03-14T14:03:32+00:00"
         },
         {
             "name": "monolog/monolog",
@@ -5416,6 +5491,62 @@
             "time": "2024-02-15T11:33:06+00:00"
         },
         {
+            "name": "thevoscache/editor",
+            "version": "dev-develop",
+            "dist": {
+                "type": "path",
+                "url": "../editor",
+                "reference": "7f1abaf07dd319bbedabeefdee3bbb26c106d64a"
+            },
+            "require": {
+                "illuminate/contracts": "^11.0",
+                "illuminate/support": "^11.0",
+                "livewire/livewire": "^3.4",
+                "php": "^8.2"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "TheVosCache\\Editor\\EditorServiceProvider"
+                    ],
+                    "aliases": {
+                        "Editor": "TheVosCache\\Editor\\Facades\\Editor"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "TheVosCache\\Editor\\": "src/",
+                    "TheVosCache\\Editor\\Database\\Factories\\": "database/factories/"
+                }
+            },
+            "autoload-dev": {
+                "psr-4": []
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Matthijs De vos",
+                    "email": "m.devos96@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "Livewire block based editor",
+            "homepage": "https://github.com/thevoscache/editor",
+            "keywords": [
+                "editor",
+                "laravel",
+                "theVosCache"
+            ],
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
+        },
+        {
             "name": "tijsverkoyen/css-to-inline-styles",
             "version": "v2.2.7",
             "source": {
@@ -5998,6 +6129,68 @@
                 "source": "https://github.com/laravel/sail"
             },
             "time": "2024-03-08T16:32:33+00:00"
+        },
+        {
+            "name": "laravel/ui",
+            "version": "v4.5.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/laravel/ui.git",
+                "reference": "da3811f409297d13feccd5858ce748e7474b3d11"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/laravel/ui/zipball/da3811f409297d13feccd5858ce748e7474b3d11",
+                "reference": "da3811f409297d13feccd5858ce748e7474b3d11",
+                "shasum": ""
+            },
+            "require": {
+                "illuminate/console": "^9.21|^10.0|^11.0",
+                "illuminate/filesystem": "^9.21|^10.0|^11.0",
+                "illuminate/support": "^9.21|^10.0|^11.0",
+                "illuminate/validation": "^9.21|^10.0|^11.0",
+                "php": "^8.0"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^7.35|^8.15|^9.0",
+                "phpunit/phpunit": "^9.3|^10.4|^11.0"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "4.x-dev"
+                },
+                "laravel": {
+                    "providers": [
+                        "Laravel\\Ui\\UiServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Laravel\\Ui\\": "src/",
+                    "Illuminate\\Foundation\\Auth\\": "auth-backend/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Taylor Otwell",
+                    "email": "taylor@laravel.com"
+                }
+            ],
+            "description": "Laravel UI utilities and presets.",
+            "keywords": [
+                "laravel",
+                "ui"
+            ],
+            "support": {
+                "source": "https://github.com/laravel/ui/tree/v4.5.0"
+            },
+            "time": "2024-03-04T13:58:27+00:00"
         },
         {
             "name": "mockery/mockery",
@@ -8124,7 +8317,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "thevoscache/editor": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

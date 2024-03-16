@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
+                <div class="card-header">Reset Password</div>
 
                 <div class="card-body">
                     @if (session('status'))
@@ -14,7 +14,13 @@
                         </div>
                     @endif
 
-                    {{ __('You are logged in!') }}
+                    <form method="POST" action="{{ route('password.email') }}">
+                        @csrf
+
+                        <x-input type="errors" />
+                        <x-input type="email" name="email" label="Email" required />
+                        <x-input type="submit" label="Send Password Reset" />
+                    </form>
                 </div>
             </div>
         </div>

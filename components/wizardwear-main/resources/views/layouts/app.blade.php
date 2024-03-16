@@ -34,7 +34,7 @@
             </div>
 
 {{--            @include('layouts._toast')--}}
-{{--            @include('layouts._nav')--}}
+            @include('layouts._nav')
 
             @yield('content')
         </div>
