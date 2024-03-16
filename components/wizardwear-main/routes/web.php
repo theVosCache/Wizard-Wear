@@ -3,10 +3,16 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('home');
-});
+use App\Http\Controllers as C;
+use App\Http\Controllers\Admin as A;
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [C\HomeController::class, 'index'])->name('root');
+
+
+Route::prefix('admin')->as('admin.')->middleware('auth')->group(function(){
+    Route::resources([
+        'page' => A\PageController::class
+    ]);
+});

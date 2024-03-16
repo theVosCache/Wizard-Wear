@@ -9,7 +9,7 @@
             <!-- Left Side Of Navbar -->
             <ul class="navbar-nav m-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">Home</a>
+                    <a href="{{ route('root') }}" class="nav-link">Home</a>
                 </li>
 
             </ul>
@@ -22,7 +22,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#" class="dropdown-item">
+                                <a href="{{ route('admin.page.index') }}" class="dropdown-item">
                                     Pagina's beheren
                                 </a>
                             </li>

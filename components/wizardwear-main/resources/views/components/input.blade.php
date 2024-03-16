@@ -10,5 +10,6 @@
         class="form-control @error($name) is-invalid @enderror" placeholder="{{ $attributes->get('placeholder') }}"
         value="{{ old($name) ?? $value }}"
         @required($attributes->has('required'))
+        @disabled($attributes->has('disabled'))
     >
 </div>
