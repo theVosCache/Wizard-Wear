@@ -9,7 +9,7 @@
             <div class="row">
                 <div class="col-10">
                     @php
-                        $i = 0;
+                        $i = 1;
                     @endphp
                     @foreach($blocks as $block)
                         <livewire:dynamic-component
@@ -18,7 +18,6 @@
                             :data="$block['data']"
                             :index="$i"
                             wire:key="{{ uniqid() }}"/>
-
                         @php
                             $i++;
                         @endphp

@@ -23,7 +23,7 @@ class HeadingBlock extends Component
         $this->dispatch('editor-add-block', [
             "type" => "heading-block",
             "data" => [
-                'size' => '',
+                'size' => 'h1',
                 'text' => '',
             ]
         ]);

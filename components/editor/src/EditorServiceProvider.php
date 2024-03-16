@@ -12,10 +12,15 @@ class EditorServiceProvider extends ServiceProvider
 {
     public function boot(): void
     {
-        $this->publishesMigrations([
-            __DIR__.'/../database/migrations' => database_path('migrations'),
+//        $this->publishesMigrations([
+//            __DIR__.'/../database/migrations' => database_path('migrations'),
+//        ]);
+
+        $this->publishes([
+            __DIR__.'/../config/editor.php' => config_path('editor.php'),
         ]);
 
+        $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'editor');
 
         Livewire::component('block-editor', BlockEditor::class);

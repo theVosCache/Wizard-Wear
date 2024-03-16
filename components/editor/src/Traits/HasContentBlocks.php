@@ -3,12 +3,12 @@
 namespace TheVosCache\Editor\Traits;
 
 use Illuminate\Database\Eloquent\Relations\MorphMany;
-use TheVosCache\Editor\Models\ContentBlocks;
+use TheVosCache\Editor\Models\ContentBlock;
 
 trait HasContentBlocks
 {
     public function contentBlocks(): MorphMany
     {
-        return $this->morphMany(ContentBlocks::class, 'contentBlocks');
+        return $this->morphMany(ContentBlock::class, 'attached');
     }
 }
