@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire;
 
 use App\Models\Page;
@@ -22,7 +24,7 @@ class PageCreateForm extends Component
 
         $slug = $slugText;
         $count = 1;
-        while (Page::where('slug', $slug)->exists()){
+        while (Page::where('slug', $slug)->exists()) {
             $slug = sprintf("%s-%s", $slugText, $count);
             $count++;
         }
@@ -37,7 +39,7 @@ class PageCreateForm extends Component
             'slug' => $this->slug
         ]);
 
-        if ($page->save()){
+        if ($page->save()) {
             $this->redirect(route('admin.page.show', $page));
         }
     }

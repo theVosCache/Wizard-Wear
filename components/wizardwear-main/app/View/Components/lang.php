@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\View\Components;
 
 use Closure;
@@ -18,7 +20,7 @@ class lang extends Component
 
     public function render(): string
     {
-        $translationString = sprintf("%s.%s", $this->key , $this->translationString);
+        $translationString = sprintf("%s.%s", $this->key, $this->translationString);
         $translation = __($translationString, $this->data, $this->locale);
 
         return ($translation !== $translationString) ? $translation : $this->translationString;

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -44,7 +46,7 @@ class PageController extends Controller
         $page->save();
 
         session()->flash('success', 'Pagina Bijgewerkt');
-        session()->flash('success-extended-message', "Pagina: ". $page->name);
+        session()->flash('success-extended-message', "Pagina: " . $page->name);
 
         return redirect()->route('admin.page.edit', $page);
     }

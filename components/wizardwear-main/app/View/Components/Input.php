@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\View\Components;
 
 use Closure;
@@ -26,12 +28,12 @@ class Input extends Component
     public function render(): View|Closure|string
     {
         return match ($this->type) {
-            'errors'    => view('components.input.errors'),
-            'submit'    => view('components.input.submit'),
-            'boxes'     => view('components.input.boxes'),
-            'switch'    => view('components.input.switch'),
-            'select'    => view('components.input.select'),
-            default     => view('components.input')
+            'errors' => view('components.input.errors'),
+            'submit' => view('components.input.submit'),
+            'boxes' => view('components.input.boxes'),
+            'switch' => view('components.input.switch'),
+            'select' => view('components.input.select'),
+            default => view('components.input')
         };
     }
 }
