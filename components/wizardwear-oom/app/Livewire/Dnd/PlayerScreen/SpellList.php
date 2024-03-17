@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire\Dnd\PlayerScreen;
 
 use App\Models\Dnd\DndCharacter;
@@ -9,7 +11,6 @@ use Livewire\Component;
 
 class SpellList extends Component
 {
-
     public Collection $spellList;
     public Spell $spell;
     public string $selectedSpell;

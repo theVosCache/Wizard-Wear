@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -44,7 +46,7 @@ class EventController extends Controller
             'end' => 'nullable|date'
         ]);
 
-        $event = new Event;
+        $event = new Event();
         $event->name = $request->name;
         $event->description = $request->description;
         $event->max_members = $request->max_members;

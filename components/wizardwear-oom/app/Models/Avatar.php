@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -20,11 +22,11 @@ class Avatar extends Model
     {
         $storagePath = $uploadedFile->store('avatars', ['disk' => 'public']);
 
-        if ($storagePath === false){
+        if ($storagePath === false) {
             return null;
         }
 
-        $avatar = new Avatar;
+        $avatar = new Avatar();
         $avatar->attached_type = get_class($attached);
         $avatar->attached_id = $attached->id;
         $avatar->extension = $uploadedFile->getClientOriginalExtension();

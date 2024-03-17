@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire;
 
 use App\Models\Avatar;
@@ -60,7 +62,7 @@ class MyItemEditor extends Component
         $item = $this->item;
 
         if (empty($item)) {
-            $item = new Item;
+            $item = new Item();
             $item->user_id = $this->user->id;
         }
 

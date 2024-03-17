@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers;
 
 use App\Models\Character;
@@ -51,7 +53,7 @@ class MyAccountController extends Controller
         $user->save();
         session()->flash('success', 'Save Successful');
 
-        if ($request->has('current_password') && ($request->has('email') || $request->has('password'))){
+        if ($request->has('current_password') && ($request->has('email') || $request->has('password'))) {
             Auth::logout();
         }
 

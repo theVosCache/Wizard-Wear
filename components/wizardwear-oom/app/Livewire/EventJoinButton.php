@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire;
 
 use App\Models\Event;
@@ -29,7 +31,7 @@ class EventJoinButton extends Component
         if ($this->user->events->contains($this->event)) {
             $this->user->events()->updateExistingPivot(
                 $this->event->id,
-                ['present'=> true]
+                ['present' => true]
             );
         } else {
             $this->user->events()->attach($this->event, ['present' => true]);
@@ -44,7 +46,7 @@ class EventJoinButton extends Component
     {
         $this->user->events()->updateExistingPivot(
             $this->event->id,
-            ['present'=> false]
+            ['present' => false]
         );
 
         $this->joined = $this->user->events()

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Dnd;
 
 use App\Http\Controllers\Controller;
@@ -14,7 +16,7 @@ class DndCampaignController extends Controller
 {
     public function __construct()
     {
-//        $this->authorizeResource(DndCampaign::class);
+        //        $this->authorizeResource(DndCampaign::class);
     }
 
     public function index()
@@ -38,7 +40,7 @@ class DndCampaignController extends Controller
             'allow_players_to_join' => 'nullable|bool'
         ]);
 
-        $dndCampaign = new DndCampaign;
+        $dndCampaign = new DndCampaign();
         $dndCampaign->dungeon_master_id = Auth::id();
         $dndCampaign->name = $request->name;
         $dndCampaign->next_session = ($request->next_session) ? Carbon::parse($request->next_session) : null;
@@ -105,14 +107,14 @@ class DndCampaignController extends Controller
             'character_uuid' => 'required|uuid|exists:characters,uuid'
         ]);
 
-        if ($dndCampaign->invite_code !== $request->invite_code){
+        if ($dndCampaign->invite_code !== $request->invite_code) {
             session()->flash('danger', 'Invalid invite code');
             return redirect()->back();
         }
 
         $character = Character::findByUuid($request->character_uuid);
 
-        $dndCharacter = new DndCharacter;
+        $dndCharacter = new DndCharacter();
         $dndCharacter->user_id = Auth::id();
         $dndCharacter->character_id = $character->id;
         $dndCharacter->dnd_campaign_id = $dndCampaign->id;

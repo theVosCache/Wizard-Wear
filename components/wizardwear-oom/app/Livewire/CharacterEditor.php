@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire;
 
 use App\Models\Avatar;
@@ -57,7 +59,7 @@ class CharacterEditor extends Component
     public function saveNewCharacter(): void
     {
         if (empty($this->activeCharacterUuid)) {
-            $character = new Character;
+            $character = new Character();
             $character->user_id = $this->user->id;
             $character->name = $this->name;
             $character->house = $this->house;
@@ -71,12 +73,12 @@ class CharacterEditor extends Component
             }
         } else {
             $character = Character::findByUuid($this->activeCharacterUuid);
-            if ($character){
+            if ($character) {
                 $character->name = $this->name;
                 $character->house = $this->house;
                 $character->about = $this->about;
 
-                if (!empty($this->avatar)){
+                if (!empty($this->avatar)) {
                     $character->avatar?->delete();
                     Avatar::store($this->avatar, $character);
                     $this->reset('avatar');

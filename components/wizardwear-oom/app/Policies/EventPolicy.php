@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Policies;
 
 use App\Models\Event;
@@ -15,7 +17,7 @@ class EventPolicy
      */
     public function viewAny(User $user): bool
     {
-        if (Route::current()->getName() === 'event.index'){
+        if (Route::current()->getName() === 'event.index') {
             return true;
         }
 

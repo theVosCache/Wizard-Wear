@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire\Dnd\DungeonMasterScreen;
 
 use App\Http\Resources\DndCampaignMonsterData;
@@ -11,8 +13,10 @@ class MonsterList extends Component
 {
     public DndCampaign $dndCampaign;
 
-    public string $name, $monsterType;
-    public int $currentHitPoints, $totalHitPoints;
+    public string $name;
+    public string $monsterType;
+    public int $currentHitPoints;
+    public int $totalHitPoints;
 
     public function mount(DndCampaign $dndCampaign): void
     {
@@ -26,7 +30,7 @@ class MonsterList extends Component
         /** @var DndCampaignMonsterData[] $monsterList */
         $monsterList = $data->monsterList;
 
-        if ($monsterList[$index]->currentHitPoints < $monsterList[$index]->totalHitPoints){
+        if ($monsterList[$index]->currentHitPoints < $monsterList[$index]->totalHitPoints) {
             $monsterList[$index]->currentHitPoints++;
         }
 
@@ -42,7 +46,7 @@ class MonsterList extends Component
         /** @var DndCampaignMonsterData[] $monsterList */
         $monsterList = $data->monsterList;
 
-        if ($monsterList[$index]->currentHitPoints > 0){
+        if ($monsterList[$index]->currentHitPoints > 0) {
             $monsterList[$index]->currentHitPoints--;
         }
 

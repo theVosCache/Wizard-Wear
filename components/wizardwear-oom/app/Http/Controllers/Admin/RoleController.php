@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
@@ -37,7 +39,7 @@ class RoleController extends Controller
             'user_ids.*' => 'nullable|integer|exists:users,id'
         ]);
 
-        $role = new Role;
+        $role = new Role();
 
         $role->name = $request->name;
         $role->slug = $request->slug;

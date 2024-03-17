@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire\Dnd;
 
 use App\Http\Resources\DndCampaignMonsterData;
@@ -29,7 +31,7 @@ class CampaignMainDataEditor extends Component
         );
 
         $this->dndCampaign->data->monsterList[] = $monster;
-        if ($this->dndCampaign->save()){
+        if ($this->dndCampaign->save()) {
             $this->reset('name', 'monsterType', 'currentHitPoints', 'totalHitPoints');
         }
     }

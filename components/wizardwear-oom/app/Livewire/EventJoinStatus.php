@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire;
 
 use App\Models\Event;
@@ -37,7 +39,7 @@ class EventJoinStatus extends Component
         $this->event = $event;
         $this->user = $user;
 
-        if ($this->event->users->contains($user)){
+        if ($this->event->users->contains($user)) {
             $this->eventUser = $this->event->users()->where('user_id', $user->id)->first()->pivot;
             $this->eventItems = $this->eventUser->items;
 
@@ -50,7 +52,7 @@ class EventJoinStatus extends Component
     {
         $tmpItem = $this->user->items->where('uuid', $itemUuid)->first();
 
-        if ($this->eventItems->contains($tmpItem)){
+        if ($this->eventItems->contains($tmpItem)) {
             $this->eventUser->items()->detach($tmpItem);
         } else {
             $this->eventUser->items()->attach($tmpItem);

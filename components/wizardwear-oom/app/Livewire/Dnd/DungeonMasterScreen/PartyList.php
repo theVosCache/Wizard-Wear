@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire\Dnd\DungeonMasterScreen;
 
 use App\Http\Resources\DndPlayerData;
@@ -29,21 +31,21 @@ class PartyList extends Component
     public function updated($name, $value): void
     {
         if ($name === 'searchSpells') {
-            if (empty($this->searchSpells)){
+            if (empty($this->searchSpells)) {
                 $this->spells = new Collection();
                 return;
             }
 
-            $this->spells = Spell::where('name', 'like',  $this->searchSpells . "%")->get();
+            $this->spells = Spell::where('name', 'like', $this->searchSpells . "%")->get();
             return;
         }
         if ($name === 'searchPotions') {
-            if (empty($this->searchPotions)){
+            if (empty($this->searchPotions)) {
                 $this->potions = new Collection();
                 return;
             }
 
-            $this->potions = Potion::where('name', 'like',  $this->searchPotions . "%")->get();
+            $this->potions = Potion::where('name', 'like', $this->searchPotions . "%")->get();
         }
     }
 

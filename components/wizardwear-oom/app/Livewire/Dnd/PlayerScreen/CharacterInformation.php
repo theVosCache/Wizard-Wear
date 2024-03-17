@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Livewire\Dnd\PlayerScreen;
 
 use App\Models\Dnd\DndCharacter;
@@ -11,8 +13,16 @@ class CharacterInformation extends Component
     public DndCharacter $dndCharacter;
 
     public bool $editCharacter = false;
-    public int $level, $totalHitPoints, $initiative, $strength,
-        $dexterity, $constitution, $intelligence, $wisdom, $charisma, $armorClass;
+    public int $level;
+    public int $totalHitPoints;
+    public int $initiative;
+    public int $strength;
+    public int $dexterity;
+    public int $constitution;
+    public int $intelligence;
+    public int $wisdom;
+    public int $charisma;
+    public int $armorClass;
 
     public function mount(DndCharacter $dndCharacter): void
     {
