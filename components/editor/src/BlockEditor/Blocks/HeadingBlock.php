@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TheVosCache\Editor\BlockEditor\Blocks;
 
 use Illuminate\Contracts\View\View;
@@ -42,7 +44,7 @@ class HeadingBlock extends Component
 
     public function mount(?array $data = null): void
     {
-        if (!empty($data)){
+        if (!empty($data)) {
             $this->size = $data['size'];
             $this->text = $data['text'];
         }
@@ -50,11 +52,11 @@ class HeadingBlock extends Component
 
     public function render(): View
     {
-        if ($this->renderMethod === 'lib'){
+        if ($this->renderMethod === 'lib') {
             return view('editor::blocks.heading_block.lib');
         }
 
-        if ($this->renderMethod === 'edit'){
+        if ($this->renderMethod === 'edit') {
             return view('editor::blocks.heading_block.edit');
         }
 

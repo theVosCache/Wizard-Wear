@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TheVosCache\Editor\BlockEditor\Blocks;
 
 use Illuminate\Contracts\View\View;
@@ -39,18 +41,18 @@ class TextBlock extends Component
 
     public function mount(?array $data = null): void
     {
-        if (!empty($data)){
+        if (!empty($data)) {
             $this->text = $data['text'];
         }
     }
 
     public function render(): View
     {
-        if ($this->renderMethod === 'lib'){
+        if ($this->renderMethod === 'lib') {
             return view('editor::blocks.text_block.lib');
         }
 
-        if ($this->renderMethod === 'edit'){
+        if ($this->renderMethod === 'edit') {
             return view('editor::blocks.text_block.edit');
         }
 

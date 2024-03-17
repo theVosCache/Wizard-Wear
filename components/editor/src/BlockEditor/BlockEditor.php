@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace TheVosCache\Editor\BlockEditor;
 
 use Illuminate\Contracts\View\View;
@@ -25,7 +27,7 @@ class BlockEditor extends Component
         $this->availableBlocks = config('editor.available_blocks');
         $this->model = $model;
 
-        if (!(collect(class_uses($model))->contains(HasContentBlocks::class))){
+        if (!(collect(class_uses($model))->contains(HasContentBlocks::class))) {
             throw new InvalidArgumentException(
                 "Model must use HasContentBlocks Trait"
             );
@@ -43,8 +45,8 @@ class BlockEditor extends Component
     {
         foreach ($this->blocks as $index => $blockData) {
             $block = $this->model->contentBlocks->where('index', $index)->first();
-            if (empty($block)){
-                $block = new ContentBlock;
+            if (empty($block)) {
+                $block = new ContentBlock();
                 $block->index = $index;
                 $block->attached_type = $this->model::class;
                 $block->attached_id = $this->model->id;
@@ -56,7 +58,7 @@ class BlockEditor extends Component
             $block->save();
         }
 
-        if (!empty($this->redirectUrl)){
+        if (!empty($this->redirectUrl)) {
             session()->flash('success', 'Content blocks updated');
             $this->redirect($this->redirectUrl);
         }
@@ -67,7 +69,7 @@ class BlockEditor extends Component
     {
         $blockCount = count($this->blocks);
 
-        $this->blocks[$blockCount+1] = $blockData;
+        $this->blocks[$blockCount + 1] = $blockData;
     }
 
     #[On(event: 'block-updated')]
