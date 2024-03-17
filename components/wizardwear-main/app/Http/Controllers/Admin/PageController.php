@@ -10,7 +10,7 @@ class PageController extends Controller
 {
     public function index()
     {
-        $pages = Page::all();
+        $pages = Page::all()->sortBy('slug');
         return view('admin.page.index', compact('pages'));
     }
 

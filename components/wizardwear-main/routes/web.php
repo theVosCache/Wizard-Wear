@@ -8,11 +8,12 @@ use App\Http\Controllers\Admin as A;
 
 Auth::routes();
 
-Route::get('/', [C\HomeController::class, 'index'])->name('root');
-
+Route::get('/', C\HomeController::class)->name('root');
 
 Route::prefix('admin')->as('admin.')->middleware('auth')->group(function(){
     Route::resources([
         'page' => A\PageController::class
     ]);
 });
+
+Route::any('/{slug}', C\PageController::class)->where('slug', '.*');

@@ -57,6 +57,7 @@ class BlockEditor extends Component
         }
 
         if (!empty($this->redirectUrl)){
+            session()->flash('success', 'Content blocks updated');
             $this->redirect($this->redirectUrl);
         }
     }

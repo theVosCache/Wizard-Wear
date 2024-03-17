@@ -5,6 +5,7 @@ namespace TheVosCache\Editor;
 use Illuminate\Support\ServiceProvider;
 use Livewire\Livewire;
 use TheVosCache\Editor\BlockEditor\BlockEditor;
+use TheVosCache\Editor\BlockEditor\BlockRenderer;
 use TheVosCache\Editor\BlockEditor\Blocks\HeadingBlock;
 use TheVosCache\Editor\BlockEditor\Blocks\TextBlock;
 
@@ -24,6 +25,7 @@ class EditorServiceProvider extends ServiceProvider
         $this->loadViewsFrom(__DIR__.'/../resources/views', 'editor');
 
         Livewire::component('block-editor', BlockEditor::class);
+        Livewire::component('block-renderer', BlockRenderer::class);
         Livewire::component('heading-block', HeadingBlock::class);
         Livewire::component('text-block', TextBlock::class);
     }
