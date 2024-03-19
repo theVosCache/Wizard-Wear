@@ -4,7 +4,7 @@
             <livewire:dynamic-component
                 :component="$block->type"
                 :data="$block->data"
-                wire:key="{{ uniqid() }}"/>
+                wire:key="{{ $block->uuid }}"/>
         </div>
     @endforeach
 </div>

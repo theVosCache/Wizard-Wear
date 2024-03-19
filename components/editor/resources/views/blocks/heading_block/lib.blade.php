@@ -1,11 +1,11 @@
 <div class="card text-center">
     <div class="card-img-top bg-body-secondary">
-        <h1>
-            <i class="fa-solid {{ $this::$config['icon'] }}"></i>
-        </h1>
+        <h2>
+            <i class="fa-solid {{ $this::ICON }}"></i>
+        </h2>
     </div>
     <div class="card-header">
-        {{ $this::$config['type'] }}
+        {{ $this::TYPE }}
     </div>
     <div class="card-body p-2">
         <button

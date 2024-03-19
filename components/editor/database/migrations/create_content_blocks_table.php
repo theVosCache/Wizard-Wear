@@ -15,7 +15,8 @@ return new class extends Migration
             $table->morphs('attached');
             $table->integer('index');
             $table->string('type');
-            $table->json('data');
+            $table->json('data')->nullable();
+            $table->json('data_preview')->nullable();
 
             $table->timestamps();
             $table->softDeletes();

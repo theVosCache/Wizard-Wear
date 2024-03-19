@@ -1,4 +1,4 @@
-<div>
+<div style="min-height: 500px">
     <div class="row">
         <div class="col-12">
             <h1>Content Editor</h1>
@@ -8,23 +8,16 @@
         <div class="col-8">
             <div class="row">
                 <div class="col-10">
-                    @php
-                        $i = 1;
-                    @endphp
-                    @foreach($blocks as $block)
+                    @foreach($model->contentBlocks->sortBy('index') as $block)
                         <livewire:dynamic-component
-                            :component="$block['type']"
+                            :component="$block->type"
                             renderMethod="edit"
-                            :data="$block['data']"
-                            :index="$i"
-                            wire:key="{{ uniqid() }}"/>
-                        @php
-                            $i++;
-                        @endphp
+                            :contentBlock="$block"
+                            wire:key="{{ $block->uuid }}"/>
                     @endforeach
                 </div>
                 <div class="col-2">
-                    <button class="btn btn-success" wire:click="save">Save</button>
+                    <button class="btn btn-success">Save</button>
                 </div>
             </div>
         </div>
@@ -33,9 +26,9 @@
             <h3>Available Blocks</h3>
             <div class="row">
                 @foreach($availableBlocks as $block)
-                    <div class="col-6">
+                    <div class="col-6 mb-2">
                         <livewire:dynamic-component
-                            :component="$block::$config['type']"
+                            :component="$block::TYPE"
                             renderMethod="lib"
                             wire:key="{{ uniqid() }}"/>
                     </div>
