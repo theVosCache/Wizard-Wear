@@ -34,7 +34,7 @@
                     </li>
                     @endrole
 
-                    @role(Role::BOARD)
+                    @role([Role::BOARD, Role::ADMIN])
                     <li class="nav-item dropdown ms-auto">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             Admin
@@ -45,11 +45,20 @@
                                     Events Beheren
                                 </a>
                             </li>
+                            <hr>
+                            <li>
+                                <a href="{{ route('admin.user.index') }}" class="dropdown-item">
+                                    Users Beheren
+                                </a>
+                            </li>
+                            @role(Role::ADMIN)
+                            <hr>
                             <li>
                                 <a href="{{ route('admin.role.index') }}" class="dropdown-item">
                                     Roles
                                 </a>
                             </li>
+                            @endrole
                         </ul>
                     </li>
                     @endrole
