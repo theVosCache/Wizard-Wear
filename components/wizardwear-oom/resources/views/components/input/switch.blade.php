@@ -3,7 +3,7 @@
     <div class="input-group-text col-3 text-right form-check form-switch">
         <input
             class="form-check-input ms-auto" type="checkbox"
-            role="switch" name="{{ $name }}" value="1">
+            role="switch" name="{{ $name }}" value="1" @checked($attributes->get('checked'))>
     </div>
     <input type="text" value="{{ $label }}" class="form-control disabled" disabled>
 </div>

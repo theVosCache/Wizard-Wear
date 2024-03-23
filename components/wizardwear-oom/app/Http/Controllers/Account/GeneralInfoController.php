@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Http\Controllers\Account;
 
 use App\Http\Controllers\Controller;
@@ -30,7 +32,7 @@ class GeneralInfoController extends Controller
         $user->city = $request->city;
 
         $user->save();
-        session()->flash('success', 'Account Updated');
+        session()->flash(self::FLASH_KEYS['success_title'], 'Account Updated');
         return redirect()->route('my-account.general-info');
     }
 
@@ -59,12 +61,12 @@ class GeneralInfoController extends Controller
                 $user->email_verified_at = null;
                 $user->sendEmailVerificationNotification();
 
-                session()->flash('success-extended-message', "Check your new email for the verification mail");
+                session()->flash(self::FLASH_KEYS['success_message'], "Check your new email for the verification mail");
             }
         }
 
         $user->save();
-        session()->flash('success', 'Email or Password Updated');
+        session()->flash(self::FLASH_KEYS['success_title'], 'Email or Password Updated');
         return redirect()->route('my-account.general-info');
     }
 }

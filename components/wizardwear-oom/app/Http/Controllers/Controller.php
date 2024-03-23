@@ -11,4 +11,11 @@ use Illuminate\Routing\Controller as BaseController;
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
+
+    protected const array FLASH_KEYS = [
+        'success_title' => 'success',
+        'success_message' => 'success-extended-message',
+        'danger_title' => 'danger',
+        'danger_message' => 'danger-extended-message',
+    ];
 }

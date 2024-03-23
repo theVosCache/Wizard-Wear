@@ -54,6 +54,7 @@ class EventController extends Controller
         $event->end = $request->end;
 
         if ($event->save()) {
+            session()->flash(self::FLASH_KEYS['success_title'], 'Event Created');
             return redirect()->route('admin.event.show', $event);
         } else {
             return redirect()->back();
@@ -96,7 +97,7 @@ class EventController extends Controller
         $event->end = $request->end;
 
         $event->save();
-
+        session()->flash(self::FLASH_KEYS['success_title'], 'Event Updated');
         return redirect()->route('admin.event.show', $event);
     }
 
@@ -106,6 +107,7 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         $event->delete();
+        session()->flash(self::FLASH_KEYS['danger_title'], 'Event Deleted');
         return redirect()->route('admin.event.index');
     }
 }

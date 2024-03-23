@@ -6,18 +6,18 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <!-- Left Side Of Navbar -->
-            <ul class="navbar-nav m-auto">
-                <li class="nav-item">
-                    <a href="{{ route('home') }}" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ route('event.index') }}" class="nav-link">Events</a>
-                </li>
-
-            </ul>
-
             @auth
+                <!-- Left Side Of Navbar -->
+                <ul class="navbar-nav m-auto">
+                    <li class="nav-item">
+                        <a href="{{ route('home') }}" class="nav-link">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="{{ route('event.index') }}" class="nav-link">Events</a>
+                    </li>
+
+                </ul>
+
                 <ul class="navbar-nav ms-auto">
                     @role([Role::DM,Role::DND])
                     <li class="nav-item dropdown ms-auto">
