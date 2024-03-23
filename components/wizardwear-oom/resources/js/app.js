@@ -2,7 +2,6 @@ import './bootstrap';
 import {Toast} from "bootstrap";
 
 window.onload = function () {
-    setInterval(function () {
-        [...document.querySelectorAll('.show')].map(toastEl => toastEl.classList.remove('show'))
-    }, 5000)
+    const toastElList = document.querySelectorAll('.toast')
+    const toastList = [...toastElList].map(toastEl => new Toast(toastEl).show())
 }

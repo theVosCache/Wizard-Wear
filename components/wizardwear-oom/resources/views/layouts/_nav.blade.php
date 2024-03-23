@@ -33,6 +33,7 @@
                         </ul>
                     </li>
                     @endrole
+
                     @role(Role::BOARD)
                     <li class="nav-item dropdown ms-auto">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
@@ -43,7 +44,8 @@
                                 <a href="{{ route('admin.event.index') }}" class="dropdown-item">
                                     Events Beheren
                                 </a>
-                            </li><li>
+                            </li>
+                            <li>
                                 <a href="{{ route('admin.role.index') }}" class="dropdown-item">
                                     Roles
                                 </a>
@@ -51,18 +53,24 @@
                         </ul>
                     </li>
                     @endrole
+
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{{ route('my-account.index') }}" class="dropdown-item">
+                                <a href="{{ route('my-account.general-info') }}" class="dropdown-item">
                                     My Account
                                 </a>
                             </li>
                             <li>
-                                <a href="{{ route('my-account.item.index') }}" class="dropdown-item">
+                                <a href="{{ route('my-account.characters') }}" class="dropdown-item">
+                                    My Characters
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('my-account.items') }}" class="dropdown-item">
                                     My Items
                                 </a>
                             </li>

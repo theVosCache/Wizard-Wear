@@ -2,7 +2,7 @@
     <div class="col-6">
         <div class="card">
             <div class="card-header text-center">
-                <h3 class="p-0 m-0">{{ $title }}</h3>
+                {{ $title }}
             </div>
             <div class="card-body">
                 <button class="btn btn-warning mb-3" wire:click="resetForm">Reset</button>

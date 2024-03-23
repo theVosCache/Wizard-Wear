@@ -25,10 +25,12 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/home', [C\HomeController::class, 'index'])->name('home');
 
     Route::prefix('/my-account')->as('my-account.')->group(function(){
-        Route::get('/', [C\MyAccountController::class, 'show'])->name('index');
-        Route::put('/', [C\MyAccountController::class, 'update'])->name('update');
+        Route::get('/', [C\Account\GeneralInfoController::class, 'index'])->name('general-info');
+        Route::put('/', [C\Account\GeneralInfoController::class, 'update'])->name('general-info.update');
+        Route::put('/email', [C\Account\GeneralInfoController::class, 'updateEmail'])->name('general-info.updateEmail');
 
-        Route::resource('item', C\ItemController::class);
+        Route::get('/items', C\Account\ItemController::class)->name('items');
+        Route::get('/characters', C\Account\CharacterController::class)->name('characters');
     });
 
     Route::prefix('/event')->as('event.')->group(function(){

@@ -18,6 +18,8 @@ class RoleSeeder extends Seeder
         $roles = [
             'Admin' => Role::ADMIN,
             'Board' => Role::BOARD,
+            'CMS Manager' => Role::CMS,
+
             'Dungeons and Dragons Player' => Role::DND,
             'Dungeons and Dragons Dungeon Master' => Role::DM,
         ];

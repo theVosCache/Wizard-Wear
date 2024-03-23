@@ -1,6 +1,6 @@
 <div class="toast-container position-fixed top-0 end-0 p-3">
     @if(session()->has('success'))
-        <div class="toast show" role="alert" data-bs-autohide="true">
+        <div class="toast" role="alert" data-bs-autohide="true">
             <div class="toast-header bg-success-subtle">
                 <strong class="me-auto">{{ session()->get('success') }}</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
@@ -14,7 +14,7 @@
     @endif
 
     @if(session()->has('danger'))
-        <div class="toast show" role="alert" data-bs-autohide="true">
+        <div class="toast" role="alert" data-bs-autohide="true">
             <div class="toast-header bg-danger-subtle">
                 <strong class="me-auto">{{ session()->get('danger') }}</strong>
                 <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>

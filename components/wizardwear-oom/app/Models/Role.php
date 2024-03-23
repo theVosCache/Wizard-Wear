@@ -14,6 +14,7 @@ class Role extends Model
 
     public const ADMIN = 'admin';
     public const BOARD = 'board-member';
+    public const CMS = 'cms-manager';
     public const DND = 'dnd';
     public const DM = 'dnd-dungeon-master';
 
