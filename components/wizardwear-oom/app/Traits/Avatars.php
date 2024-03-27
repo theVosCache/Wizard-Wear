@@ -19,7 +19,11 @@ trait Avatars
 
     public function getAvatarPathAttribute(): string
     {
-        return Storage::disk('public')->url($this->avatar->storage_path) ?? '';
+        if (empty($this->avatar)){
+            return '';
+        }
+
+        return Storage::disk('public')->url($this->avatar?->storage_path) ?? '';
     }
 
     public function getHasAvatarAttribute(): string

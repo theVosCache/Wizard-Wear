@@ -28,6 +28,11 @@ class Character extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function getIsDndCharacterAttribute(): bool
+    {
+        return $this->dndCharacter()->exists();
+    }
+
     public function getHouseCrestImgPathAttribute(): string
     {
         $path = $this->house . "-house-crest.webp";

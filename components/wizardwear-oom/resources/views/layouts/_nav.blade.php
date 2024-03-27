@@ -15,7 +15,6 @@
                     <li class="nav-item">
                         <a href="{{ route('event.index') }}" class="nav-link">Events</a>
                     </li>
-
                 </ul>
 
                 <ul class="navbar-nav ms-auto">
