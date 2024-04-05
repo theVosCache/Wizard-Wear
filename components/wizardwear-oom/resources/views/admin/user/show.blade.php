@@ -7,11 +7,23 @@
                 <div class="card">
                     <div class="card-header">User: {{ $user->name }}</div>
                     <div class="card-body">
-                        <div class="row">
-                            <div class="col-12 text-end mb-3">
+                        <div class="row mb-3">
+                            <div class="col-4">
+                                <a href="{{ route('admin.user.index') }}" class="btn btn-info">< Back to Overview</a>
+                            </div>
+                            <div class="offset-4 col-4 text-end">
                                 Password reset link button
+                                <form action="{{ route('admin.user.destroy', $user) }}" method="post"
+                                    onsubmit="return confirm('Are you sure?')">
+                                    @csrf
+                                    @method('DELETE')
+
+                                    <input type="submit" class="btn btn-danger" value="Delete User">
+                                </form>
                                 <a href="{{ route('admin.user.edit', $user) }}" class="btn btn-warning">Edit</a>
                             </div>
+                        </div>
+                        <div class="row">
                             <div class="col-4">
                                 <h3>User Details</h3>
                                 <table class="table">

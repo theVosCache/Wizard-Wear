@@ -16,8 +16,6 @@
                             <x-input type="text" name="city" label="City" :value="$user->city" />
                             <x-input type="boxes" name="role_ids" label="Roles"
                                 :options="$roles" :selected="$user->roles->pluck('id')" multiple/>
-
-
                             <x-input type="submit" label="Update" />
                         </form>
                     </div>

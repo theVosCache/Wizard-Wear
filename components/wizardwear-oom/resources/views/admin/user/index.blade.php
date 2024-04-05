@@ -9,6 +9,11 @@
                 <div class="card">
                     <div class="card-header">User Management</div>
                     <div class="card-body">
+                        <div class="row mb-3">
+                            <div class="col-12 text-end">
+                                <a href="{{ route('admin.user.create') }}" class="btn btn-success">Create new User</a>
+                            </div>
+                        </div>
                         <table class="table table-hover">
                             <thead>
                             <tr>
