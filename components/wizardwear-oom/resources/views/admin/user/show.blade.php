@@ -10,6 +10,7 @@
                         <div class="row">
                             <div class="col-12 text-end mb-3">
                                 Password reset link button
+                                <a href="{{ route('admin.user.edit', $user) }}" class="btn btn-warning">Edit</a>
                             </div>
                             <div class="col-4">
                                 <h3>User Details</h3>
