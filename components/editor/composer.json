@@ -1,6 +1,6 @@
 {
     "name": "thevoscache/editor",
-    "description": "Livewire block based editor",
+    "description": "block based editor",
     "keywords": [
         "theVosCache",
         "laravel",
