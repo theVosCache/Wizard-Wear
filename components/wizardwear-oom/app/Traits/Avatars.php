@@ -26,7 +26,7 @@ trait Avatars
         return Storage::disk('public')->url($this->avatar?->storage_path) ?? '';
     }
 
-    public function getHasAvatarAttribute(): string
+    public function getHasAvatarAttribute(): bool
     {
         return !empty($this->avatar);
     }

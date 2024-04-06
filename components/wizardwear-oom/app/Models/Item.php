@@ -15,6 +15,8 @@ class Item extends Model
 {
     use HasFactory, Uuid, SoftDeletes, Avatars;
 
+    protected $appends = ['avatar_path'];
+
     public function user(): BelongsTo
     {
         return $this->belongsTo(User::class);
