@@ -6,8 +6,12 @@ export default StyleSheet.create({
         ...Base.main.container,
         ...Base.main.centered
     }),
+    containerVCentered: StyleSheet.create({
+        ...Base.main.container,
+        ...Base.main.centered,
+        justifyContent: 'center',
+        alignSelf: 'center',
+        alignItems:'center',
+    }),
     image: Base.main.image,
-    textInput: Base.main.input,
-    button: Base.buttons.black,
-    buttonLabel: Base.text.white,
 })

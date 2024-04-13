@@ -20,7 +20,7 @@ export default {
         },
         image: {
             flex: 1,
-            resizeMode: 'cover',
+            resizeMode: 'contain',
         },
     }),
     buttons: StyleSheet.create({
