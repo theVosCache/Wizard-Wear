@@ -14,9 +14,11 @@ class UserDetailsController extends Controller
     {
         $user = $request->user();
         $items = $user->items()->withTrashed()->get();
+        $characters = $user->characters()->withTrashed()->get();
 
         return response()->json([
             'user' => $user,
+            'characters' => $characters,
             'items' => $items
         ]);
     }

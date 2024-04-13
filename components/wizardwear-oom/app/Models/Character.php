@@ -18,6 +18,8 @@ class Character extends Model
 {
     use HasFactory, SoftDeletes, Uuid, Avatars;
 
+    protected $appends = ['avatar_path'];
+
     public function dndCharacter(): HasOne
     {
         return $this->hasOne(DndCharacter::class);
