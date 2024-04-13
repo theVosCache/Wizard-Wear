@@ -4,6 +4,7 @@ export default {
     main: StyleSheet.create({
         container: {
             flex: 1,
+            paddingTop: 5,
             width: '100%',
         },
         centered: {

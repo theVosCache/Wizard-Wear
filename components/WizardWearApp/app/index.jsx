@@ -3,7 +3,6 @@ import {router} from "expo-router";
 import {Image, Text, View} from 'react-native';
 import * as Progress from 'react-native-progress';
 
-
 import SplashScreenStyle from "../style/Screens/SplashScreen";
 import AssetUri from "../assets/AssetUri";
 import Api from "../api/Api";
@@ -40,18 +39,23 @@ class App extends React.Component {
             }
 
             setTimeout(async () => {
-                if (await api.user() !== false) {
+                let user = await api.user();
+                if (user !== false) {
                     this.setState({
                         text: 'Token validated',
                         progress: 0.75
                     })
+                    setTimeout(async () => {
+                        //TODO load data
+                        router.navigate('/login')
+                    }, 1000)
                 } else {
                     this.setState({
                         text: 'Unable to validate token',
                         progress: 0.75
                     })
                     setTimeout(async () => {
-                        // router.navigate('/login')
+                        router.navigate('/login')
                     }, 1000)
                 }
             }, 500)
