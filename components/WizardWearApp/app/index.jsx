@@ -6,6 +6,12 @@ import * as Progress from 'react-native-progress';
 import SplashScreenStyle from "../style/Screens/SplashScreen";
 import AssetUri from "../assets/AssetUri";
 import Api from "../api/Api";
+import {loadUserData} from '../Redux/Actions/UserActions'
+import {connect} from "react-redux";
+
+function timeout(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 class App extends React.Component {
     constructor(props) {
@@ -18,49 +24,62 @@ class App extends React.Component {
         }
     }
 
-    componentDidMount() {
-        this.check();
+    async componentDidMount() {
+        await this.checkApiHealth();
+        await timeout(1000);
+        let path = await this.checkForToken();
+        await timeout(1000);
+        await this.redirect(path);
     }
 
-    async check() {
-        let api = new Api();
+    async checkApiHealth() {
         if (await Api.healthCheck()) {
             this.setState({
                 text: 'Connected to API',
                 progress: 0.25
             })
         }
-        setTimeout(async () => {
-            if (await api.getValueFor(api.TOKEN) !== null) {
-                this.setState({
-                    text: 'Loading the User token',
-                    progress: 0.5
-                })
-            }
+    }
 
-            setTimeout(async () => {
-                let user = await api.user();
-                if (user !== false) {
-                    this.setState({
-                        text: 'Token validated',
-                        progress: 0.75
-                    })
-                    setTimeout(async () => {
-                        //TODO load data
-                        router.navigate('/login')
-                    }, 1000)
-                } else {
-                    this.setState({
-                        text: 'Unable to validate token',
-                        progress: 0.75
-                    })
-                    setTimeout(async () => {
-                        router.navigate('/login')
-                    }, 1000)
-                }
-            }, 500)
-        }, 500);
+    async checkForToken() {
+        if (await this.api.getValueFor(this.api.TOKEN) !== null) {
+            this.setState({
+                text: 'Loaded the User token',
+                progress: 0.5
+            })
+            this.props.dispatch(await loadUserData())
+            await timeout(500)
+            this.setState({
+                text: 'Loaded your data',
+                progress: 0.75
+            })
 
+            return '/oom'
+        } else {
+            this.setState({
+                text: 'Unable to find token',
+                progress: 0.5
+            })
+            return '/login'
+        }
+    }
+
+    async redirect(path){
+        if (path === '/login'){
+            this.setState({
+                text: 'Loading login',
+                progress: 1
+            })
+            await timeout(1000)
+            router.navigate('/login')
+        } else {
+            this.setState({
+                text: 'Done',
+                progress: 1
+            })
+            await timeout(500)
+            router.navigate('/oom')
+        }
     }
 
     render() {
@@ -83,4 +102,8 @@ class App extends React.Component {
     }
 }
 
-export default App
+function mapStateToProps(state) {
+    return {user: state.user}
+}
+
+export default connect(mapStateToProps)(App)
