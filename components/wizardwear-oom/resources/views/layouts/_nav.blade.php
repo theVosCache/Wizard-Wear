@@ -1,3 +1,5 @@
+@use(App\Models\Role)
+
 <nav class="navbar navbar-expand-md navbar-light bg-none mb-4">
     <div class="container">
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -18,6 +20,7 @@
                 </ul>
 
                 <ul class="navbar-nav ms-auto">
+                    @role([Role::DM,Role::DND])
                     <li class="nav-item dropdown ms-auto">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             Dnd
@@ -30,7 +33,9 @@
                             </li>
                         </ul>
                     </li>
+                    @endrole
 
+                    @role([Role::BOARD, Role::ADMIN])
                     <li class="nav-item dropdown ms-auto">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             Admin
@@ -47,14 +52,17 @@
                                     Users Beheren
                                 </a>
                             </li>
+                            @role(Role::ADMIN)
                             <hr>
                             <li>
                                 <a href="{{ route('admin.role.index') }}" class="dropdown-item">
                                     Roles
                                 </a>
                             </li>
+                            @endrole
                         </ul>
                     </li>
+                    @endrole
 
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">

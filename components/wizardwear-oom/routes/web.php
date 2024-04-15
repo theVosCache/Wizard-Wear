@@ -4,6 +4,7 @@ use App\Http\Controllers as C;
 use App\Http\Controllers\Admin as A;
 use App\Http\Controllers\Dnd as D;
 use App\Models\Role;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -65,13 +66,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::prefix('/admin')->as('admin.')->group(function () {
-//        Route::middleware('role:' . Role::BOARD)->group(function () {
+        Route::middleware('role:' . Role::BOARD)->group(function () {
             Route::resource('role', A\RoleController::class);
             Route::resource('event', A\EventController::class);
             Route::resource('user', A\UserController::class);
 
             Route::get('/user/{user}/reset', [A\UserController::class, 'reset'])->name('user.reset');
-//        });
+        });
     });
 });
 
