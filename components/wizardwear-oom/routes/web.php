@@ -65,13 +65,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::prefix('/admin')->as('admin.')->group(function () {
-        Route::middleware('role:' . Role::BOARD)->group(function () {
+//        Route::middleware('role:' . Role::BOARD)->group(function () {
             Route::resource('role', A\RoleController::class);
             Route::resource('event', A\EventController::class);
             Route::resource('user', A\UserController::class);
 
             Route::get('/user/{user}/reset', [A\UserController::class, 'reset'])->name('user.reset');
-        });
+//        });
     });
 });
 
