@@ -18,7 +18,7 @@ class Character extends Model
 {
     use HasFactory, SoftDeletes, Uuid, Avatars;
 
-    protected $appends = ['avatar_path'];
+    protected $appends = ['avatar_path', 'house_crest_img_path'];
 
     public function dndCharacter(): HasOne
     {
