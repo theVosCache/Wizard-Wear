@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
-import {Image, Pressable, Text, TextInput, View} from 'react-native';
-import LoginScreenStyle from "../../style/Screens/LoginScreen";
+import {Image, ImageBackground, Pressable, Text, TextInput, View} from 'react-native';
+
 import AssetUri from "../../assets/AssetUri";
+import OomLayoutStyle from "../../style/Layouts/OomLayout";
 
 class Dashboard extends Component {
     constructor(props) {
@@ -10,11 +11,10 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <View style={LoginScreenStyle.container}>
-                <View style={LoginScreenStyle.container}>
-                    <Image source={{uri: AssetUri.oom}} style={LoginScreenStyle.image} height={250} width={250}/>
+            <ImageBackground source={{uri: AssetUri.oom}} style={OomLayoutStyle.backgroundImage}>
+                <View style={OomLayoutStyle.container}>
                 </View>
-            </View>
+            </ImageBackground>
         )
     }
 }
