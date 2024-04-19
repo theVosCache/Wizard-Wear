@@ -100,4 +100,11 @@ class UserController extends Controller
         session()->flash($this::FLASH_KEYS['danger_title'], 'User deleted');
         return redirect()->route('admin.user.index');
     }
+
+    public function passwordReset(Request $request, User $user)
+    {
+        $user->notify(new ResetPassword(Str::random(64)));
+        session()->flash($this::FLASH_KEYS['success_title'], 'Password reset successfully');
+        return redirect()->route('admin.user.show', $user);
+    }
 }

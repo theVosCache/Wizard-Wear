@@ -71,7 +71,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
             Route::resource('event', A\EventController::class);
             Route::resource('user', A\UserController::class);
 
-            Route::get('/user/{user}/reset', [A\UserController::class, 'reset'])->name('user.reset');
+            Route::get('/user/{user}/passwordReset', [A\UserController::class, 'passwordReset'])->name('user.passwordReset');
         });
     });
 });

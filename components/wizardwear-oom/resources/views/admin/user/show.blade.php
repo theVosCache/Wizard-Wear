@@ -12,7 +12,7 @@
                                 <a href="{{ route('admin.user.index') }}" class="btn btn-info">< Back to Overview</a>
                             </div>
                             <div class="offset-4 col-4 text-end">
-                                Password reset link button
+                                <a href="{{ route('admin.user.passwordReset', $user) }}" class="btn btn-info">Reset Password</a>
                                 <form action="{{ route('admin.user.destroy', $user) }}" method="post"
                                     onsubmit="return confirm('Are you sure?')">
                                     @csrf
