@@ -13,8 +13,8 @@ class UserDetailsController extends Controller
     public function __invoke(Request $request)
     {
         $user = $request->user();
-        $items = $user->items()->withTrashed()->get();
-        $characters = $user->characters()->withTrashed()->get();
+        $items = $user->items;
+        $characters = $user->characters;
 
         return response()->json([
             'user' => $user,
