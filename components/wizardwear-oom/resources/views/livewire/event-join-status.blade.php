@@ -3,7 +3,7 @@
         Sign up for Event and show which items you bring
     </div>
     <div class="card-body">
-        <button class="btn {{ $buttonClass }}">
+        <button class="btn {{ $buttonClass }}" wire:click="toggleStatus">
             {{ $buttonText }}
         </button>
 

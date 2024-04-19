@@ -50,6 +50,7 @@ class EventJoinStatus extends Component
 
     public function toggleItem(string $itemUuid): void
     {
+        $this->eventUser = $this->event->users()->where('user_id', $this->user->id)->first()->pivot;
         $tmpItem = $this->user->items->where('uuid', $itemUuid)->first();
 
         if ($this->eventItems->contains($tmpItem)) {
@@ -59,6 +60,22 @@ class EventJoinStatus extends Component
         }
 
         $this->eventItems = $this->eventUser->items;
+    }
+
+    public function toggleStatus(): void
+    {
+        if ($this->event->users->contains($this->user)) {
+            $this->eventUser->items()->sync([]);
+            $this->event->users()->detach($this->user->id);
+
+            $this->buttonClass = 'btn-danger';
+            $this->buttonText = $this::JOIN_BUTTON_TEXT['danger'];
+        } else {
+            $this->event->users()->attach($this->user->id);
+
+            $this->buttonClass = 'btn-success';
+            $this->buttonText = $this::JOIN_BUTTON_TEXT['success'];
+        }
     }
 
     public function render(): View
