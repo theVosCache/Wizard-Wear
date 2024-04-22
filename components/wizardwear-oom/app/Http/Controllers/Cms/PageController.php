@@ -47,7 +47,7 @@ class PageController extends Controller
      */
     public function edit(Page $page)
     {
-        session()->flash('page_uuid', $page->uuid);
+//        session()->flash('page_uuid', $page->uuid);
         return view('cms.pages.edit', compact('page'));
     }
 

@@ -14,10 +14,7 @@
                                 </a>
                             </div>
                             <div class="col-12">
-                                @livewire('dropblockeditor',[
-                                    'title' => $page->name,
-                                    'activeBlocks' => $page->content['blocks'] ?? []
-                                ])
+
                             </div>
                         </div>
                     </div>
