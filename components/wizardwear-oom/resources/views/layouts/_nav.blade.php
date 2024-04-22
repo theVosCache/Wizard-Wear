@@ -35,6 +35,27 @@
                     </li>
                     @endrole
 
+                    @role(Role::CMS)
+                    <li class="nav-item dropdown ms-auto">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            CMS
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><h6 class="dropdown-header">Main site</h6></li>
+                            <li>
+                                <a href="{{ route('admin.cms.nav') }}" class="dropdown-item">
+                                    Navigation
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.cms.page.index') }}" class="dropdown-item">
+                                    Pages
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    @endrole
+
                     @role([Role::BOARD, Role::ADMIN])
                     <li class="nav-item dropdown ms-auto">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
