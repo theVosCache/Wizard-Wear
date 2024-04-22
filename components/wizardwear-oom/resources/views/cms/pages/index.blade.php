@@ -27,7 +27,6 @@
                                     <tbody>
                                     @foreach($pages as $page)
                                         <tr>
-
                                             <td>
                                                 @if($page->navigation->count() !== 0)
                                                     <span class="text-success">Yes</span>
@@ -39,8 +38,10 @@
                                             <td>{{ $page->slug }}</td>
                                             <td>{{ count($page->content ?? []) }}</td>
                                             <td>
-                                                <a href="{{ route('admin.cms.page.show', $page) }}" class="btn btn-info">Show</a>
-                                                <a href="{{ route('admin.cms.page.edit', $page) }}" class="btn btn-warning">Edit</a>
+                                                <a href="{{ route('admin.cms.page.show', $page) }}"
+                                                   class="btn btn-info">Show</a>
+                                                <a href="{{ route('admin.cms.page.edit', $page) }}"
+                                                   class="btn btn-warning">Edit</a>
                                                 <a href="#" class="btn btn-danger">Delete</a>
                                             </td>
                                         </tr>
