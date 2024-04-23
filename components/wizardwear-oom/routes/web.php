@@ -67,13 +67,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     });
 
     Route::prefix('/admin')->as('admin.')->group(function () {
-        Route::prefix('/cms')->as('cms.')->group(function () {
-            Route::middleware('role:' . Role::CMS)->middleware('role:' . Role::ADMIN)->group(function () {
-                Route::get('nav', AC\NavigationController::class)->name('nav');
-                Route::resource('page', AC\PageController::class);
-            });
-        });
-
         Route::middleware('role:' . Role::BOARD)->group(function () {
             Route::resource('role', A\RoleController::class);
             Route::resource('event', A\EventController::class);
