@@ -21,4 +21,5 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::delete('/auth/logout', [Api\AuthController::class, 'logout']);
 
     Route::get('/user', Api\UserDetailsController::class);
+    Route::apiResource('events', Api\EventController::class);
 });
