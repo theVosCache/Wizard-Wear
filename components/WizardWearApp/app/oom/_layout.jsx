@@ -13,7 +13,11 @@ class OomLayout extends React.Component {
 
 
     render(){
-        this.house_crest_uri = this.props.characters[0].house_crest_img_path;
+        if (this.props.characters.length > 0) {
+            this.house_crest_uri = this.props.characters[0].house_crest_img_path;
+        }else {
+            this.house_crest_uri = '';
+        }
         return (
             <View style={OomLayoutStyle.flex}>
                 <SafeAreaView style={OomLayoutStyle.flex}>
