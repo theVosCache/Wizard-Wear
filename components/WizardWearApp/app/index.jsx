@@ -2,12 +2,14 @@ import React from 'react';
 import {router} from "expo-router";
 import {Image, Text, View} from 'react-native';
 import * as Progress from 'react-native-progress';
+import * as Font from "expo-font";
 
 import SplashScreenStyle from "../style/Screens/SplashScreen";
 import AssetUri from "../assets/AssetUri";
 import Api from "../api/Api";
-import {loadUserData} from '../Redux/Actions/UserActions'
+
 import {connect} from "react-redux";
+import {loadUserData} from '../Redux/Actions/UserActions'
 
 function timeout(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
@@ -25,6 +27,10 @@ class App extends React.Component {
     }
 
     async componentDidMount() {
+        await Font.loadAsync({
+            PirataOneRegular: require("../assets/PirataOne-Regular.ttf")
+        })
+
         await this.checkApiHealth();
         await timeout(1000);
         let path = await this.checkForToken();
@@ -48,6 +54,15 @@ class App extends React.Component {
                 progress: 0.5
             })
             this.props.dispatch(await loadUserData())
+
+            if (this.props.user.user === undefined) {
+                this.setState({
+                    text: 'Unable to load your data',
+                    progress: 0.75
+                })
+                return '/login'
+            }
+
             await timeout(500)
             this.setState({
                 text: 'Loaded your data',

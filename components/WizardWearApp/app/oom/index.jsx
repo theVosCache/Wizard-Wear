@@ -3,27 +3,30 @@ import {Image, ImageBackground, Pressable, Text, TextInput, View} from 'react-na
 
 import AssetUri from "../../assets/AssetUri";
 import OomLayoutStyle from "../../style/Layouts/OomLayout";
+import OomIndexScreenStyle from "../../style/Screens/OomIndexScreen";
 import {connect} from "react-redux";
-import Card from "../../Components/Card";
-import UserItem from "../../Components/UserItem";
 
 class Dashboard extends Component {
     constructor(props) {
         super(props);
     }
 
-    renderItems() {
-        return this.props.items.map((item, index) => {
-            return <UserItem item={item} key={index}/>
-        })
-    }
-
     render() {
         return (
-            <View style={OomLayoutStyle.container}>
-                <Card header={'Your Items'}>
-                    {this.renderItems()}
-                </Card>
+            <View style={OomIndexScreenStyle.container}>
+                <View style={OomIndexScreenStyle.flexRow}>
+                    <Pressable style={OomIndexScreenStyle.button}>
+                        <Text style={OomIndexScreenStyle.buttonLabel}>Events</Text>
+                    </Pressable>
+                </View>
+                <View style={OomIndexScreenStyle.flexRow}>
+                    <Pressable style={OomIndexScreenStyle.button}>
+                        <Text style={OomIndexScreenStyle.buttonLabel}>Your Items</Text>
+                    </Pressable>
+                    <Pressable style={OomIndexScreenStyle.button}>
+                        <Text style={OomIndexScreenStyle.buttonLabel}>Your Characters</Text>
+                    </Pressable>
+                </View>
             </View>
         )
     }

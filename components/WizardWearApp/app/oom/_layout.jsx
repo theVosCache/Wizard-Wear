@@ -13,11 +13,12 @@ class OomLayout extends React.Component {
 
 
     render(){
-        if (this.props.characters.length > 0) {
+        if (this.props.characters !== undefined && this.props.characters.length > 0) {
             this.house_crest_uri = this.props.characters[0].house_crest_img_path;
         }else {
             this.house_crest_uri = '';
         }
+
         return (
             <View style={OomLayoutStyle.flex}>
                 <SafeAreaView style={OomLayoutStyle.flex}>
@@ -26,7 +27,9 @@ class OomLayout extends React.Component {
                         <Text>{this.props.user.name}</Text>
                         <Image src={this.house_crest_uri} style={OomLayoutStyle.headerImage} />
                     </View>
-                    <Slot style={OomLayoutStyle.container}/>
+                    <View style={OomLayoutStyle.container}>
+                        <Slot/>
+                    </View>
                 </SafeAreaView>
             </View>
         )
