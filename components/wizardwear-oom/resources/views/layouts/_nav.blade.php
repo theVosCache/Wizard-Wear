@@ -12,76 +12,19 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="navbar-nav m-auto">
                     <li class="nav-item">
-                        <a href="{{ route('home') }}" class="nav-link">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('event.index') }}" class="nav-link">Events</a>
+                        <a href="{{ route('dashboard') }}" class="nav-link">Home</a>
                     </li>
                 </ul>
 
                 <ul class="navbar-nav ms-auto">
-                    @role([Role::DM,Role::DND])
-                    <li class="nav-item dropdown ms-auto">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            Dnd
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="{{ route('dnd.dnd-campaign.index') }}" class="dropdown-item">
-                                    Dnd Campaigns
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    @endrole
-
-                    @role([Role::BOARD, Role::ADMIN])
-                    <li class="nav-item dropdown ms-auto">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
-                            Admin
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li>
-                                <a href="{{ route('admin.event.index') }}" class="dropdown-item">
-                                    Events Beheren
-                                </a>
-                            </li>
-                            <hr>
-                            <li>
-                                <a href="{{ route('admin.user.index') }}" class="dropdown-item">
-                                    Users Beheren
-                                </a>
-                            </li>
-                            @role(Role::ADMIN)
-                            <hr>
-                            <li>
-                                <a href="{{ route('admin.role.index') }}" class="dropdown-item">
-                                    Roles
-                                </a>
-                            </li>
-                            @endrole
-                        </ul>
-                    </li>
-                    @endrole
-
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="{{ route('my-account.general-info') }}" class="dropdown-item">
+                                <a href="#" class="dropdown-item">
                                     My Account
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('my-account.characters') }}" class="dropdown-item">
-                                    My Characters
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{ route('my-account.items') }}" class="dropdown-item">
-                                    My Items
                                 </a>
                             </li>
                             <li>
