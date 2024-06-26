@@ -34,7 +34,19 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-12 mb-3">
-                                    {!! $user->twoFactorQrCodeSvg() !!}
+                                    <div class="row">
+                                        <div class="col-12 mb-2">
+                                            {!! $user->twoFactorQrCodeSvg() !!}
+                                        </div>
+                                        <div class="col-12 text-center">
+                                            <button class="btn btn-warning btn-toggle" data-target="two-fa-secret">Enter
+                                                code manually
+                                            </button>
+                                        </div>
+                                        <div class="col-12 text-center d-none" id="two-fa-secret">
+                                            {{ decrypt($user->two_factor_secret) }}
+                                        </div>
+                                    </div>
                                 </div>
                                 <div class="col-12">
                                     <form action="{{ route('two-factor.confirm') }}" method="post">
@@ -44,7 +56,8 @@
                                             <label class="input-group-text col-3" for="code">
                                                 <strong class="ms-auto">Code</strong>
                                             </label>
-                                            <input type="text" class="form-control" name="code" id="code" autocomplete="off" required>
+                                            <input type="text" class="form-control" name="code" id="code"
+                                                   autocomplete="off" required>
                                         </div>
 
                                         <input type="submit" value="Confirm 2FA" class="btn btn-success form-control">
@@ -73,17 +86,25 @@
                 <div class="card-header">2FA Information</div>
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-4">
-                            2FA Status:
-                            @if(!empty($user->two_factor_secret) && empty($user->two_factor_confirmed_at))
-                                <span class="text-warning">Enabled but not Configured or Confirmed</span>
-                            @elseif($user->hasEnabledTwoFactorAuthentication())
-                                <span class="text-success">Active</span>
-                            @else
-                                <span class="text-danger">Inactive</span>
+                        <div class="col-5">
+                            <p>
+                                2FA Status:
+                                @if(!empty($user->two_factor_secret) && empty($user->two_factor_confirmed_at))
+                                    <span class="text-warning">Enabled but not Configured or Confirmed</span>
+                                @elseif($user->hasEnabledTwoFactorAuthentication())
+                                    <span class="text-success">Active</span>
+                                @else
+                                    <span class="text-danger">Inactive</span>
+                                @endif
+                            </p>
+                            @if($user->hasEnabledTwoFactorAuthentication())
+                                <p>
+                                    Use these recovery codes in case you lost your 2fa device. <br>
+                                    Save them to a place to find them when you lost access.
+                                </p>
                             @endif
                         </div>
-                        <div class="col-8">
+                        <div class="col-7">
                             @if($user->hasEnabledTwoFactorAuthentication())
                                 <h4>Recovery Codes</h4>
                                 <table class="table table-striped">
