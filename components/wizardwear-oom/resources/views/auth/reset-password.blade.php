@@ -1,29 +1,23 @@
 @extends('layouts.app')
 
-@section('title', 'Register - Order of Merlin')
+@section('title', 'Set new Password - Order of Merlin')
 
 @section('content')
     <div class="container">
         <div class="row">
             <div class="col-12">
                 <div class="card">
-                    <div class="card-header">Register</div>
+                    <div class="card-header">Set new Password</div>
                     <div class="card-body">
-                        <form action="{{ route('register') }}" method="post">
+                        <form action="{{ route('password.update') }}" method="post">
                             @csrf
-
-                            <div class="input-group mb-3">
-                                <label class="input-group-text col-3" for="name">
-                                    <strong class="ms-auto">Name</strong>
-                                </label>
-                                <input type="text" class="form-control" name="name" id="name" placeholder="Merlin" required>
-                            </div>
+                            <input type="hidden" name="token" value="{{ $token }}">
 
                             <div class="input-group mb-3">
                                 <label class="input-group-text col-3" for="email">
                                     <strong class="ms-auto">Email</strong>
                                 </label>
-                                <input type="email" class="form-control" name="email" id="email" placeholder="merlin@order.magic" required>
+                                <input type="email" class="form-control disabled" name="email" id="email" placeholder="merlin@order.magic" value="{{ $email ?? null }}" required readonly>
                             </div>
 
                             <div class="input-group mb-3">

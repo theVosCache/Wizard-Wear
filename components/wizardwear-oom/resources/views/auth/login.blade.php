@@ -13,17 +13,29 @@
                             @csrf
 
                             <div class="input-group mb-3">
-                                <label class="input-group-text col-3" for="email">Email</label>
-                                <input type="email" class="form-control" name="email" id="email" required>
+                                <label class="input-group-text col-3" for="email">
+                                    <strong class="ms-auto">Email</strong>
+                                </label>
+                                <input type="email" class="form-control" name="email" id="email" placeholder="merlin@order.magic" value="{{ old('email') }}" required>
                             </div>
 
                             <div class="input-group mb-3">
-                                <label class="input-group-text col-3" for="password">Password / Wachtwoord</label>
-                                <input type="password" class="form-control" name="password" id="password" required>
+                                <label class="input-group-text col-3" for="password">
+                                    <strong class="ms-auto">
+                                        Password
+                                    </strong>
+                                </label>
+                                <input type="password" class="form-control" name="password" id="password" placeholder="**************" required>
                             </div>
 
-                            <div class="input-group">
-                                <input type="submit" value="Sign In / Inloggen" class="btn btn-primary form-control">
+                            <div class="row">
+                                <div class="col-3">
+                                    <a href="{{ route('password.request') }}">Reset my password</a>
+                                </div>
+
+                                <div class="col-9">
+                                    <input type="submit" value="Sign In" class="btn btn-primary form-control">
+                                </div>
                             </div>
                         </form>
                     </div>

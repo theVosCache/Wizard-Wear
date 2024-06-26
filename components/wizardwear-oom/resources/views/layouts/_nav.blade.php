@@ -23,8 +23,13 @@
                         </a>
                         <ul class="dropdown-menu">
                             <li>
-                                <a href="#" class="dropdown-item">
+                                <a href="{{ route('profile.information') }}" class="dropdown-item">
                                     My Account
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('profile.2fa') }}" class="dropdown-item">
+                                    My 2FA Settings
                                 </a>
                             </li>
                             <li>
