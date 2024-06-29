@@ -19,6 +19,24 @@
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                            Admin
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ route('admin.role.index') }}" class="dropdown-item">
+                                    Role management
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{{ route('admin.permission.index') }}" class="dropdown-item">
+                                    Permission management
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
                             {{ Auth::user()->name }}
                         </a>
                         <ul class="dropdown-menu">
