@@ -11,6 +11,10 @@ class Require2FA
 {
     public function handle(Request $request, Closure $next)
     {
+        if (app()->isLocal()) {
+            return $next($request);
+        }
+
         if (!$request->user()->two_factor_confirmed_at) {
             session()->flash('danger', 'ACCESS DENIED');
             session()->flash('danger-extended-message', '2FA required for this page');

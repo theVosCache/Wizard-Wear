@@ -18,7 +18,6 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('/admin')->as('admin.')->middleware(Require2FA::class)->group(function () {
        Route::resources([
            'role' => C\Admin\RoleController::class,
-           'permission' => C\Admin\PermissionController::class,
        ]);
     });
 });

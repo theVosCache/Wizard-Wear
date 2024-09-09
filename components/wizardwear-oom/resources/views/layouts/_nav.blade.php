@@ -27,11 +27,6 @@
                                     Role management
                                 </a>
                             </li>
-                            <li>
-                                <a href="{{ route('admin.permission.index') }}" class="dropdown-item">
-                                    Permission management
-                                </a>
-                            </li>
                         </ul>
                     </li>
 

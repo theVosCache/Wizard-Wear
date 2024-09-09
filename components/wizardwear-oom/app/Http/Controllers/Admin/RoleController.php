@@ -2,10 +2,14 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\User;
 use DirectoryTree\Authorization\Role;
 use DirectoryTree\Authorization\Permission;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class RoleController extends Controller
 {
@@ -18,14 +22,16 @@ class RoleController extends Controller
     public function create()
     {
         $permissions = Permission::all();
-        return view('admin.roles.create', compact('permissions'));
+        $users = User::all();
+        return view('admin.roles.create', compact('permissions', 'users'));
     }
 
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $request->validate([
             'name' => 'required|string|unique:roles,name',
             'label' => 'required|string',
+            'users.*' => 'nullable|exists:users,id',
             'permissions.*' => 'nullable|exists:permissions,id'
         ]);
 
@@ -36,34 +42,55 @@ class RoleController extends Controller
 
         if ($role->save()){
             $role->permissions()->attach($request->permissions);
+            $role->users()->attach($request->users);
 
-            session()->flash('success', 'Success');
-            session()->flash('success-extended-message', 'Role created successfully');
+            $this->setSuccessFlashMessage(message: 'Role Created Successfully');
             return redirect()->route('admin.role.index');
         }
 
-        session()->flash('danger', 'Error');
-        session()->flash('danger-extended-message', 'Something went wrong');
+        $this->setDangerFlashMessage(message: 'Role was not created');
         return redirect()->back();
     }
 
-    public function show(string $id)
+    public function show(Role $role): View
     {
-        //
+        return view('admin.roles.show', compact('role'));
     }
 
-    public function edit(string $id)
+    public function edit(Role $role): View
     {
-        //
+        $users = User::all();
+        $permissions = Permission::all();
+        return view('admin.roles.edit', compact('role', 'permissions', 'users'));
     }
 
-    public function update(Request $request, string $id)
+    public function update(Request $request, Role $role): RedirectResponse
     {
-        //
+        $request->validate([
+            'name' => ['required','string', Rule::unique('roles')->ignore($role)],
+            'label' => 'required|string',
+            'users.*' => 'nullable|exists:users,id',
+            'permissions.*' => 'nullable|exists:permissions,id'
+        ]);
+
+        $role->update([
+            'name' => $request->name,
+            'label' => $request->label
+        ]);
+
+        $role->users()->sync($request->users);
+        $role->permissions()->sync($request->permissions);
+
+
+        $this->setSuccessFlashMessage(message: 'Role Updated Successfully');
+        return redirect()->route('admin.role.show', $role);
     }
 
-    public function destroy(string $id)
+    public function destroy(Role $role): RedirectResponse
     {
-        //
+        $role->delete();
+
+        $this->setDangerFlashMessage(message: 'Role Deleted Successfully');
+        return redirect()->route('admin.role.index');
     }
 }
